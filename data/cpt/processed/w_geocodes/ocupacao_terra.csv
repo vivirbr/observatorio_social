@@ -1,0 +1,120 @@
+"municipio","Estado","Município.s.","Data","Famílias","Categoria","ano","CD_MUN"
+"AC_Acrelândia","AC","Acrelândia","22/08/2021",21,"Posseiro",2021,1200013
+"AC_Capixaba","AC","Capixaba","28/02/2022",35,"Posseiro",2022,1200179
+"AL_Arapiraca","AL","Arapiraca","11/01/2021",90,"Sem Terra",2021,2700300
+"AL_Arapiraca","AL","Arapiraca","28/02/2022",120,"Sem Terra",2022,2700300
+"AL_Jequiá da Praia","AL","Jequiá da Praia","25/02/2022",96,"Sem Terra",2022,2703759
+"AL_São Miguel dos Campos","AL","São Miguel dos Campos","25/02/2022",142,"Sem Terra",2022,2708600
+"AM_Autazes","AM","Autazes","30/10/2021",NA,"Indígenas",2021,1300300
+"AP_Macapá","AP","Macapá","16/09/2021",20,"Posseiro",2021,1600303
+"BA_Água Fria","BA","Água Fria","30/07/2022",75,"Sem Terra",2022,2900405
+"BA_Água Fria","BA","Água Fria","30/07/2022",75,"Sem Terra",2022,2900405
+"BA_Andaraí","BA","Andaraí","15/11/2021",45,"Sem Terra",2021,2901304
+"BA_Conceição do Almeida","BA","Conceição do Almeida","01/05/2021",100,"Sem Terra",2021,2908309
+"BA_Guaratinga","BA","Guaratinga","21/07/2022",150,"Sem Terra",2022,2911808
+"BA_Guaratinga","BA","Guaratinga","28/05/2022",178,"Sem Terra",2022,2911808
+"BA_Guaratinga","BA","Guaratinga","11/04/2022",105,"Sem Terra",2022,2911808
+"BA_Ibirataia","BA","Ibirataia","08/08/2021",NA,"Sem Terra",2021,2912905
+"BA_Itabela","BA","Itabela","08/03/2022",100,"Sem Terra",2022,2914653
+"BA_Itaeté","BA","Itaeté","29/07/2022",250,"Sem Terra",2022,2915007
+"BA_Itaeté","BA","Itaeté","25/03/2022",250,"Sem Terra",2022,2915007
+"BA_Itamaraju","BA","Itamaraju","28/09/2021",100,"Sem Terra",2021,2915601
+"BA_Itamaraju","BA","Itamaraju","28/09/2021",100,"Sem Terra",2021,2915601
+"BA_Jussari","BA","Jussari","08/03/2022",25,"Sem Terra",2022,2918555
+"BA_Maracás","BA","Maracás","12/11/2022",50,"Sem Terra",2022,2920502
+"BA_Piritiba","BA","Piritiba","19/08/2022",50,"Sem Terra",2022,2924801
+"BA_Planaltino","BA","Planaltino","13/11/2022",200,"Sem Terra",2022,2924900
+"BA_Porto Seguro","BA","Porto Seguro","15/07/2022",NA,"Sem Terra",2022,2925303
+"BA_Prado","BA","Prado","25/06/2022",25,"Indígenas",2022,2925501
+"BA_Prado","BA","Prado","01/09/2022",NA,"Indígenas",2022,2925501
+"BA_Prado","BA","Prado","23/06/2022",45,"Indígenas",2022,2925501
+"BA_Prado","BA","Prado","22/06/2022",45,"Indígenas",2022,2925501
+"BA_Prado","BA","Prado","22/09/2022",NA,"Indígenas",2022,2925501
+"BA_Prado","BA","Prado","22/06/2022",15,"Indígenas",2022,2925501
+"BA_Rafael Jambeiro","BA","Rafael Jambeiro","17/07/2022",160,"Sem Terra",2022,2925956
+"BA_Ruy Barbosa","BA","Ruy Barbosa","23/10/2021",40,"Sem Terra",2021,2927200
+"BA_Ruy Barbosa","BA","Ruy Barbosa","23/10/2022",40,"Sem Terra",2022,2927200
+"BA_São Sebastião do Passé","BA","São Sebastião do Passé","29/05/2022",80,"Sem Terra",2022,2929503
+"CE_Crateús","CE","Crateús","25/09/2021",NA,"Indígenas",2021,2304103
+"CE_Iguatu","CE","Iguatu","20/08/2022",13,"Indígenas",2022,2305506
+"CE_Ipueiras","CE","Ipueiras","18/04/2022",80,"Sem Terra",2022,2305902
+"DF_Brasília","DF","Brasília","30/04/2022",300,"Sem Terra",2022,5300108
+"DF_Brasília","DF","Brasília","26/02/2022",100,"Sem Terra",2022,5300108
+"ES_Conceição da Barra","ES","Conceição da Barra","23/10/2021",NA,"Quilombola",2021,3201605
+"ES_Conceição da Barra","ES","Conceição da Barra","06/08/2022",NA,"Quilombola",2022,3201605
+"GO_Minaçu","GO","Minaçu","23/03/2022",22,"Sem Terra",2022,5213087
+"GO_São João d'Aliança","GO","São João d'Aliança","01/01/2022",12,"Sem Terra",2022,5220009
+"MA_Balsas","MA","Balsas","14/05/2021",8,"Posseiro",2021,2101400
+"MA_Santa Inês","MA","Santa Inês","30/11/2022",60,"Quilombola",2022,2109908
+"MG_Berizal","MG","Berizal","21/11/2021",118,"Sem Terra",2021,3106655
+"MG_Brumadinho","MG","Brumadinho","15/11/2021",NA,"Indígenas",2021,3109006
+"MG_Brumadinho","MG","Brumadinho","23/02/2022",20,"Indígenas",2022,3109006
+"MG_Divinópolis","MG","Divinópolis","13/10/2021",5,"Sem Terra",2021,3122306
+"MG_Gameleiras","MG","Gameleiras","19/11/2021",100,"Sem Terra",2021,3127339
+"MG_Governador Valadares","MG","Governador Valadares","28/05/2022",150,"Sem Terra",2022,3127701
+"MG_Teófilo Otoni","MG","Teófilo Otoni","28/09/2021",100,"Indígenas",2021,3168606
+"MS_Amambai","MS","Amambai","01/05/2022",NA,"Indígenas",2022,5000609
+"MS_Amambai","MS","Amambai","27/06/2022",7,"Indígenas",2022,5000609
+"MS_Amambai","MS","Amambai","23/06/2022",7,"Indígenas",2022,5000609
+"MS_Coronel Sapucaia","MS","Coronel Sapucaia","22/05/2022",NA,"Indígenas",2022,5003157
+"MS_Naviraí","MS","Naviraí","15/10/2021",30,"Indígenas",2021,5005707
+"MS_Naviraí","MS","Naviraí","23/06/2022",30,"Indígenas",2022,5005707
+"MS_Rio Brilhante","MS","Rio Brilhante","26/02/2022",5,"Indígenas",2022,5007208
+"MT_Cotriguaçu","MT","Cotriguaçu","16/11/2021",70,"Sem Terra",2021,5103379
+"PA_Acará","PA","Acará","06/02/2022",15,"Quilombola",2022,1500206
+"PA_Breu Branco","PA","Breu Branco","17/05/2021",150,"Sem Terra",2021,1501782
+"PA_Breu Branco","PA","Breu Branco","11/07/2022",18,"Sem Terra",2022,1501782
+"PA_Curionópolis","PA","Curionópolis","05/01/2021",35,"Sem Terra",2021,1502772
+"PA_Goianésia do Pará","PA","Goianésia do Pará","23/03/2021",60,"Sem Terra",2021,1503093
+"PA_Goianésia do Pará","PA","Goianésia do Pará","05/11/2022",12,"Posseiro",2022,1503093
+"PA_Nova Ipixuna","PA","Nova Ipixuna","13/01/2021",125,"Sem Terra",2021,1504976
+"PA_Portel","PA","Portel","02/02/2021",100,"Sem Terra",2021,1505809
+"PA_São Félix do Xingu","PA","São Félix do Xingu","10/11/2022",50,"Trabalhador Rural",2022,1507300
+"PA_Senador José Porfírio","PA","Senador José Porfírio","05/06/2022",90,"Indígenas, Posseiro",2022,1507805
+"PA_Tucuruí","PA","Tucuruí","30/04/2021",50,"Sem Terra",2021,1508100
+"PB_Caaporã","PB","Caaporã","18/04/2022",50,"Sem Terra",2022,2503001
+"PB_Gurinhém","PB","Gurinhém","04/08/2021",40,"Quilombola",2021,2506400
+"PE_Cabo de Santo Agostinho","PE","Cabo de Santo Agostinho","19/04/2021",10,"Sem Terra",2021,2602902
+"PE_Caruaru","PE","Caruaru","17/05/2022",100,"Sem Terra",2022,2604106
+"PE_Feira Nova","PE","Feira Nova","17/05/2022",150,"Sem Terra",2022,2605400
+"PE_Goiana","PE","Goiana","17/05/2022",150,"Sem Terra",2022,2606200
+"PE_Ipojuca","PE","Ipojuca","17/05/2022",150,"Sem Terra",2022,2607208
+"PE_Sertânia","PE","Sertânia","12/10/2021",26,"Sem Terra",2021,2614105
+"PE_Timbaúba","PE","Timbaúba","17/05/2022",150,"Sem Terra",2022,2615300
+"PR_Piraquara","PR","Piraquara","09/08/2021",5,"Indígenas",2021,4119509
+"RJ_Campos dos Goytacazes","RJ","Campos dos Goytacazes","24/06/2021",300,"Sem Terra",2021,3301009
+"RJ_São João da Barra","RJ","São João da Barra","31/01/2022",8,"Sem Terra",2022,3305000
+"RN_Maxaranguape","RN","Maxaranguape","24/04/2022",140,"Sem Terra",2022,2407500
+"RN_Maxaranguape","RN","Maxaranguape","16/04/2022",170,"Sem Terra",2022,2407500
+"RN_Riachuelo","RN","Riachuelo","24/04/2022",120,"Sem Terra",2022,2410900
+"RN_Rio do Fogo","RN","Rio do Fogo","17/04/2022",200,"Sem Terra",2022,2408953
+"RO_Chupinguaia","RO","Chupinguaia","01/02/2022",20,"Posseiro",2022,1100924
+"RO_Cujubim","RO","Cujubim","03/09/2021",NA,"Sem Terra",2021,1100940
+"RO_Machadinho D'Oeste","RO","Machadinho D'Oeste","30/05/2022",50,"Posseiro",2022,1100130
+"RO_Nova Brasilândia D'Oeste","RO","Nova Brasilândia D'Oeste","16/04/2022",3,"Sem Terra",2022,1100148
+"RO_Pimenteiras do Oeste","RO","Pimenteiras do Oeste","04/09/2021",NA,"Sem Terra",2021,1101468
+"RO_Porto Velho","RO","Porto Velho","31/01/2021",1,"Sem Terra",2021,1100205
+"RO_Porto Velho","RO","Porto Velho","16/09/2022",48,"Posseiro",2022,1100205
+"RO_Porto Velho","RO","Porto Velho","27/10/2021",125,"Sem Terra",2021,1100205
+"RO_Rio Crespo","RO","Rio Crespo","18/02/2022",10,"Sem Terra",2022,1100262
+"RS_Cachoeirinha","RS","Cachoeirinha","17/09/2021",8,"Indígenas",2021,4303103
+"RS_Canela","RS","Canela","29/11/2021",8,"Indígenas",2021,4304408
+"RS_Porto Alegre","RS","Porto Alegre","18/10/2022",10,"Indígenas",2022,4314902
+"RS_Porto Alegre","RS","Porto Alegre","30/04/2021",8,"Indígenas",2021,4314902
+"SP_Caiuá","SP","Caiuá","19/06/2021",400,"Sem Terra",2021,3509106
+"SP_Euclides da Cunha Paulista","SP","Euclides da Cunha Paulista","21/08/2021",500,"Sem Terra",2021,3515350
+"SP_Euclides da Cunha Paulista","SP","Euclides da Cunha Paulista","23/12/2021",100,"Sem Terra",2021,3515350
+"SP_Marabá Paulista","SP","Marabá Paulista","19/06/2021",150,"Sem Terra",2021,3528700
+"SP_Mirante do Paranapanema","SP","Mirante do Paranapanema","23/10/2021",13,"Sem Terra",2021,3530201
+"SP_Mirante do Paranapanema","SP","Mirante do Paranapanema","16/10/2021",100,"Sem Terra",2021,3530201
+"SP_Mongaguá","SP","Mongaguá","14/11/2021",NA,"Indígenas",2021,3531100
+"SP_Presidente Bernardes","SP","Presidente Bernardes","26/02/2022",NA,"Sem Terra",2022,3541208
+"SP_Rosana","SP","Rosana","31/07/2021",900,"Sem Terra",2021,3544251
+"SP_Rosana","SP","Rosana","16/06/2022",200,"Sem Terra",2022,3544251
+"SP_Rosana","SP","Rosana","16/10/2021",100,"Sem Terra",2021,3544251
+"SP_Sandovalina","SP","Sandovalina","16/10/2021",100,"Sem Terra",2021,3545506
+"SP_Sandovalina","SP","Sandovalina","12/06/2021",300,"Sem Terra",2021,3545506
+"SP_Sandovalina","SP","Sandovalina","24/06/2021",500,"Sem Terra",2021,3545506
+"SP_Santo Anastácio","SP","Santo Anastácio","26/02/2022",NA,"Sem Terra",2022,3547700
+"SP_Teodoro Sampaio","SP","Teodoro Sampaio","26/02/2022",NA,"Sem Terra",2022,3554300
+"TO_Araguaína","TO","Araguaína","30/06/2022",100,"Sem Terra",2022,1702109

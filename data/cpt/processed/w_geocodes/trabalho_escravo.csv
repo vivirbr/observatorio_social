@@ -1,0 +1,376 @@
+"municipio","Estado","Município.s.","Data","Tdreanbú..nncaia","Resgatados","Menores","ano","CD_MUN"
+"AC_Manoel Urbano","AC","Manoel Urbano","27/07/2022",47,27,NA,2022,1200344
+"AC_Rio Branco","AC","Rio Branco","31/12/2022",2,NA,NA,2022,1200401
+"AL_Flexeiras","AL","Flexeiras","08/07/2021",5,5,0,2021,2702801
+"AL_Joaquim Gomes","AL","Joaquim Gomes","08/07/2021",1,1,0,2021,2703809
+"AM_Novo Aripuanã","AM","Novo Aripuanã","09/05/2021",12,12,0,2021,1303304
+"BA_Barra do Choça","BA","Barra do Choça","20/07/2022",24,24,NA,2022,2902906
+"BA_Buritirama","BA","Buritirama","20/06/2022",1,1,NA,2022,2904753
+"BA_Camacan","BA","Camacan","20/06/2022",3,1,NA,2022,2905602
+"BA_Itabela","BA","Itabela","31/12/2022",6,6,NA,2022,2914653
+"BA_João Dourado","BA","João Dourado","31/12/2022",3,3,NA,2022,2918357
+"BA_Riachão das Neves","BA","Riachão das Neves","30/12/2021",1,1,NA,2021,2926202
+"BA_Santa Luzia","BA","Santa Luzia","08/02/2022",4,4,NA,2022,2928059
+"BA_Santa Luzia","BA","Santa Luzia","08/02/2022",11,11,NA,2022,2928059
+"BA_Santa Luzia","BA","Santa Luzia","08/02/2022",1,1,NA,2022,2928059
+"BA_Simões Filho","BA","Simões Filho","02/08/2022",9,9,NA,2022,2930709
+"BA_Xique-Xique","BA","Xique-Xique","22/09/2021",44,43,NA,2021,2933604
+"BA_Xique-Xique","BA","Xique-Xique","30/12/2021",10,10,NA,2021,2933604
+"CE_Beberibe","CE","Beberibe","08/09/2022",22,22,NA,2022,2302206
+"CE_Fortim","CE","Fortim","21/07/2022",1,1,NA,2022,2304459
+"CE_Granja","CE","Granja","27/09/2021",9,9,NA,2021,2304707
+"CE_Russas","CE","Russas","13/10/2021",1,1,NA,2021,2311801
+"DF_Brasília","DF","Brasília","22/03/2021",6,6,NA,2021,5300108
+"DF_Brasília","DF","Brasília","25/12/2021",10,10,NA,2021,5300108
+"DF_Brasília","DF","Brasília","29/05/2022",3,2,NA,2022,5300108
+"DF_Brasília","DF","Brasília","07/12/2022",6,6,0,2022,5300108
+"ES_Afonso Cláudio","ES","Afonso Cláudio","12/07/2022",10,10,NA,2022,3200102
+"ES_Itapemirim","ES","Itapemirim","14/06/2021",4,4,NA,2021,3202801
+"ES_Jaguaré","ES","Jaguaré","22/07/2022",6,6,NA,2022,3203056
+"ES_Jaguaré","ES","Jaguaré","12/07/2022",2,2,NA,2022,3203056
+"ES_Linhares","ES","Linhares","04/11/2021",5,5,NA,2021,3203205
+"ES_Vila Valério","ES","Vila Valério","07/05/2021",70,70,NA,2021,3205176
+"GO_Água Fria de Goiás","GO","Água Fria de Goiás","21/10/2021",116,116,5,2021,5200175
+"GO_Águas Lindas de Goiás","GO","Águas Lindas de Goiás","09/05/2021",1,1,0,2021,5200258
+"GO_Alto Paraíso de Goiás","GO","Alto Paraíso de Goiás","02/04/2021",6,6,0,2021,5200605
+"GO_Aporé","GO","Aporé","09/05/2021",5,5,2,2021,5201504
+"GO_Caldas Novas","GO","Caldas Novas","22/01/2021",24,24,1,2021,5204508
+"GO_Cristalina","GO","Cristalina","19/01/2021",26,NA,NA,2021,5206206
+"GO_Cristalina","GO","Cristalina","31/01/2021",7,7,0,2021,5206206
+"GO_Cristalina","GO","Cristalina","26/03/2022",6,6,NA,2022,5206206
+"GO_Cristalina","GO","Cristalina","07/03/2022",17,17,0,2022,5206206
+"GO_Cristalina","GO","Cristalina","16/12/2021",10,10,0,2021,5206206
+"GO_Formosa","GO","Formosa","19/08/2021",2,1,0,2021,5208004
+"GO_Goiandira","GO","Goiandira","18/03/2022",4,3,0,2022,5208509
+"GO_Goiânia","GO","Goiânia","26/05/2021",1,1,0,2021,5208707
+"GO_Jataí","GO","Jataí","06/08/2021",54,54,1,2021,5211909
+"GO_Luziânia","GO","Luziânia","16/12/2021",2,2,1,2021,5212501
+"GO_Montes Claros de Goiás","GO","Montes Claros de Goiás","19/05/2022",9,7,NA,2022,5213707
+"GO_Nazário","GO","Nazário","23/07/2022",40,40,1,2022,5214408
+"GO_Nova Crixás","GO","Nova Crixás","29/10/2021",6,6,0,2021,5214838
+"GO_Nova Crixás","GO","Nova Crixás","29/10/2021",5,5,0,2021,5214838
+"GO_Paraúna","GO","Paraúna","29/10/2021",21,20,0,2021,5216403
+"GO_Piranhas","GO","Piranhas","22/10/2021",11,11,0,2021,5217203
+"GO_Pontalina","GO","Pontalina","29/10/2021",33,33,0,2021,5217708
+"GO_Quirinópolis","GO","Quirinópolis","25/03/2022",36,13,0,2022,5218508
+"GO_Quirinópolis","GO","Quirinópolis","22/09/2022",36,13,NA,2022,5218508
+"GO_Rio Verde","GO","Rio Verde","26/07/2022",6,6,NA,2022,5218805
+"GO_Santa Bárbara de Goiás","GO","Santa Bárbara de Goiás","23/07/2022",37,37,1,2022,5219100
+"GO_Santa Cruz de Goiás","GO","Santa Cruz de Goiás","22/03/2022",16,16,NA,2022,5219209
+"GO_Santo Antônio do Descoberto","GO","Santo Antônio do Descoberto","17/05/2022",10,10,0,2022,5219753
+"GO_São Simão","GO","São Simão","11/05/2022",52,51,NA,2022,5220405
+"GO_Serranópolis","GO","Serranópolis","11/05/2022",23,23,NA,2022,5220504
+"GO_Sítio d'Abadia","GO","Sítio d'Abadia","01/09/2022",4,4,NA,2022,5220702
+"GO_Trindade","GO","Trindade","23/08/2022",12,12,NA,2022,5221403
+"MA_Açailândia","MA","Açailândia","20/09/2021",1,1,NA,2021,2100055
+"MA_Amarante do Maranhão","MA","Amarante do Maranhão","20/09/2021",1,1,NA,2021,2100600
+"MA_Arame","MA","Arame","15/08/2022",4,3,NA,2022,2100956
+"MA_Balsas","MA","Balsas","12/03/2022",3,3,NA,2022,2101400
+"MA_Barra do Corda","MA","Barra do Corda","18/06/2021",5,5,1,2021,2101608
+"MA_Bom Jesus das Selvas","MA","Bom Jesus das Selvas","20/09/2021",16,11,NA,2021,2102036
+"MA_Bom Jesus das Selvas","MA","Bom Jesus das Selvas","20/09/2021",3,2,NA,2021,2102036
+"MA_Buriti Bravo","MA","Buriti Bravo","27/07/2022",1,1,NA,2022,2102309
+"MA_Carolina","MA","Carolina","13/10/2021",25,0,NA,2021,2102804
+"MA_Caxias","MA","Caxias","12/03/2022",17,12,NA,2022,2103000
+"MA_Cidelândia","MA","Cidelândia","15/02/2022",4,4,0,2022,2103257
+"MA_Codó","MA","Codó","30/12/2021",1,1,NA,2021,2103307
+"MA_Colinas","MA","Colinas","27/07/2022",2,2,NA,2022,2103505
+"MA_Estreito","MA","Estreito","27/07/2022",1,1,NA,2022,2104057
+"MA_Grajaú","MA","Grajaú","27/07/2022",1,1,NA,2022,2104800
+"MA_Imperatriz","MA","Imperatriz","15/05/2022",1,1,NA,2022,2105302
+"MA_Itinga do Maranhão","MA","Itinga do Maranhão","18/06/2021",1,1,NA,2021,2105427
+"MA_Mirador","MA","Mirador","25/10/2021",11,11,NA,2021,2106706
+"MA_Mirador","MA","Mirador","15/05/2022",1,1,NA,2022,2106706
+"MA_Mirador","MA","Mirador","05/07/2022",23,23,3,2022,2106706
+"MA_Montes Altos","MA","Montes Altos","15/02/2022",4,4,0,2022,2107001
+"MA_Porto Franco","MA","Porto Franco","05/07/2022",15,2,NA,2022,2109007
+"MA_Riachão","MA","Riachão","25/10/2021",15,15,NA,2021,2109502
+"MA_São Félix de Balsas","MA","São Félix de Balsas","27/07/2022",1,1,NA,2022,2110807
+"MA_São Félix de Balsas","MA","São Félix de Balsas","27/07/2022",1,1,NA,2022,2110807
+"MA_São Félix de Balsas","MA","São Félix de Balsas","23/12/2021",6,6,NA,2021,2110807
+"MA_São Raimundo das Mangabeiras","MA","São Raimundo das Mangabeiras","05/07/2022",9,2,NA,2022,2111607
+"MA_São Raimundo das Mangabeiras","MA","São Raimundo das Mangabeiras","27/07/2022",1,1,NA,2022,2111607
+"MA_São Raimundo das Mangabeiras","MA","São Raimundo das Mangabeiras","27/07/2022",1,1,NA,2022,2111607
+"MA_Sítio Novo","MA","Sítio Novo","27/07/2022",1,1,NA,2022,2111805
+"MA_Sítio Novo","MA","Sítio Novo","12/11/2022",9,9,NA,2022,2111805
+"MA_Sítio Novo","MA","Sítio Novo","27/07/2022",1,1,NA,2022,2111805
+"MA_Sucupira do Norte","MA","Sucupira do Norte","27/08/2021",1,1,NA,2021,2111904
+"MG_Abadia dos Dourados","MG","Abadia dos Dourados","19/04/2021",12,12,0,2021,3100104
+"MG_Albertina","MG","Albertina","27/07/2022",8,8,NA,2022,3101409
+"MG_Andradas","MG","Andradas","30/12/2022",7,7,NA,2022,3102605
+"MG_Andrelândia","MG","Andrelândia","27/07/2022",2,2,NA,2022,3102803
+"MG_Araponga","MG","Araponga","02/09/2021",6,6,0,2021,3103702
+"MG_Araújos","MG","Araújos","11/04/2022",2,2,NA,2022,3103900
+"MG_Bambuí","MG","Bambuí","30/12/2021",11,11,0,2021,3105103
+"MG_Barbacena","MG","Barbacena","11/04/2022",2,2,NA,2022,3105608
+"MG_Betim","MG","Betim","30/12/2022",4,4,NA,2022,3106705
+"MG_Boa Esperança","MG","Boa Esperança","27/07/2022",6,6,NA,2022,3107109
+"MG_Boa Esperança","MG","Boa Esperança","13/07/2021",30,30,1,2021,3107109
+"MG_Bonito de Minas","MG","Bonito de Minas","03/05/2022",24,23,NA,2022,3108255
+"MG_Buritizeiro","MG","Buritizeiro","13/10/2021",6,6,0,2021,3109402
+"MG_Cabo Verde","MG","Cabo Verde","13/07/2021",12,12,0,2021,3109501
+"MG_Campestre","MG","Campestre","20/10/2021",5,5,0,2021,3111002
+"MG_Campestre","MG","Campestre","31/01/2021",1,1,0,2021,3111002
+"MG_Campos Altos","MG","Campos Altos","27/07/2022",17,17,3,2022,3111507
+"MG_Campos Altos","MG","Campos Altos","03/08/2021",14,14,1,2021,3111507
+"MG_Campos Altos","MG","Campos Altos","06/08/2021",17,17,0,2021,3111507
+"MG_Campos Altos","MG","Campos Altos","27/07/2022",20,NA,3,2022,3111507
+"MG_Campos Altos","MG","Campos Altos","22/07/2022",15,15,NA,2022,3111507
+"MG_Carmo do Rio Claro","MG","Carmo do Rio Claro","02/09/2021",3,3,0,2021,3114402
+"MG_Claro dos Poções","MG","Claro dos Poções","27/07/2022",5,5,NA,2022,3116506
+"MG_Comendador Gomes","MG","Comendador Gomes","03/05/2022",9,9,NA,2022,3116902
+"MG_Coromandel","MG","Coromandel","28/09/2021",114,114,0,2021,3119302
+"MG_Coromandel","MG","Coromandel","28/09/2021",7,7,0,2021,3119302
+"MG_Coronel Pacheco","MG","Coronel Pacheco","06/04/2022",7,7,NA,2022,3119609
+"MG_Córrego Danta","MG","Córrego Danta","04/08/2021",2,2,0,2021,3119807
+"MG_Córrego Danta","MG","Córrego Danta","16/02/2022",1,1,NA,2022,3119807
+"MG_Curvelo","MG","Curvelo","31/01/2021",3,3,0,2021,3120904
+"MG_Delfinópolis","MG","Delfinópolis","26/08/2022",25,25,NA,2022,3121209
+"MG_Delta","MG","Delta","31/01/2021",45,45,0,2021,3121258
+"MG_Divinolândia de Minas","MG","Divinolândia de Minas","21/06/2022",14,14,NA,2022,3122207
+"MG_Espírito Santo do Dourado","MG","Espírito Santo do Dourado","11/04/2022",2,2,NA,2022,3124401
+"MG_Espírito Santo do Dourado","MG","Espírito Santo do Dourado","20/10/2021",5,5,0,2021,3124401
+"MG_Estrela do Indaiá","MG","Estrela do Indaiá","11/04/2022",2,2,NA,2022,3124708
+"MG_Ferros","MG","Ferros","06/04/2022",2,2,NA,2022,3125903
+"MG_Galiléia","MG","Galiléia","18/05/2021",2,2,0,2021,3127305
+"MG_Guarda-Mor","MG","Guarda-Mor","26/08/2022",35,35,NA,2022,3128600
+"MG_Heliodora","MG","Heliodora","20/10/2021",20,20,0,2021,3129202
+"MG_Ibiraci","MG","Ibiraci","25/11/2022",15,15,NA,2022,3129707
+"MG_Ilicínea","MG","Ilicínea","27/07/2022",4,4,NA,2022,3130507
+"MG_Ilicínea","MG","Ilicínea","27/07/2022",1,1,1,2022,3130507
+"MG_Ilicínea","MG","Ilicínea","13/07/2021",24,24,0,2021,3130507
+"MG_Ilicínea","MG","Ilicínea","13/07/2021",9,9,0,2021,3130507
+"MG_Ilicínea","MG","Ilicínea","27/07/2022",6,6,NA,2022,3130507
+"MG_Indianópolis","MG","Indianópolis","26/08/2022",1,1,NA,2022,3130705
+"MG_Inhaúma","MG","Inhaúma","08/02/2021",11,11,2,2021,3131000
+"MG_Ipanema","MG","Ipanema","31/01/2021",1,1,0,2021,3131208
+"MG_Iraí de Minas","MG","Iraí de Minas","27/07/2022",54,54,1,2022,3131604
+"MG_Itabira","MG","Itabira","10/08/2021",4,NA,0,2021,3131703
+"MG_Jacuí","MG","Jacuí","13/09/2022",33,33,NA,2022,3134806
+"MG_Januária","MG","Januária","13/09/2022",23,23,2,2022,3135209
+"MG_Jequitaí","MG","Jequitaí","27/07/2022",14,14,NA,2022,3135605
+"MG_João Pinheiro","MG","João Pinheiro","27/07/2022",7,7,NA,2022,3136306
+"MG_João Pinheiro","MG","João Pinheiro","31/01/2021",28,28,0,2021,3136306
+"MG_João Pinheiro","MG","João Pinheiro","30/12/2021",6,6,0,2021,3136306
+"MG_João Pinheiro","MG","João Pinheiro","30/12/2022",4,4,NA,2022,3136306
+"MG_João Pinheiro","MG","João Pinheiro","06/04/2022",7,7,NA,2022,3136306
+"MG_João Pinheiro","MG","João Pinheiro","06/04/2022",3,3,NA,2022,3136306
+"MG_João Pinheiro","MG","João Pinheiro","13/10/2021",15,15,2,2021,3136306
+"MG_João Pinheiro","MG","João Pinheiro","31/01/2021",38,38,0,2021,3136306
+"MG_Lagoa dos Patos","MG","Lagoa dos Patos","30/12/2022",1,1,NA,2022,3137304
+"MG_Lagoa dos Patos","MG","Lagoa dos Patos","30/11/2021",1,1,0,2021,3137304
+"MG_Lagoa Dourada","MG","Lagoa Dourada","01/06/2022",23,23,NA,2022,3137403
+"MG_Lagoa Formosa","MG","Lagoa Formosa","11/04/2022",2,2,NA,2022,3137502
+"MG_Lassance","MG","Lassance","26/04/2022",76,42,NA,2022,3138104
+"MG_Lassance","MG","Lassance","16/04/2022",6,6,NA,2022,3138104
+"MG_Machado","MG","Machado","30/10/2021",5,5,0,2021,3139003
+"MG_Manhumirim","MG","Manhumirim","23/07/2022",7,7,NA,2022,3139508
+"MG_Minas Novas","MG","Minas Novas","16/02/2021",5,5,3,2021,3141801
+"MG_Monte Belo","MG","Monte Belo","18/07/2022",5,5,NA,2022,3143005
+"MG_Nova Ponte","MG","Nova Ponte","26/08/2022",74,74,NA,2022,3145000
+"MG_Olhos-d'Água","MG","Olhos-d'Água","06/04/2022",24,24,NA,2022,3145455
+"MG_Olhos-d'Água","MG","Olhos-d'Água","22/07/2022",14,14,NA,2022,3145455
+"MG_Paracatu","MG","Paracatu","08/06/2021",84,84,0,2021,3147006
+"MG_Patos de Minas","MG","Patos de Minas","28/01/2022",7,7,NA,2022,3148004
+"MG_Patrocínio","MG","Patrocínio","20/08/2021",6,6,0,2021,3148103
+"MG_Perdizes","MG","Perdizes","21/03/2022",15,15,NA,2022,3149804
+"MG_Piedade de Caratinga","MG","Piedade de Caratinga","18/07/2022",5,5,NA,2022,3150158
+"MG_Pimenta","MG","Pimenta","30/12/2022",9,9,NA,2022,3150505
+"MG_Poço Fundo","MG","Poço Fundo","20/10/2021",5,5,0,2021,3151701
+"MG_Poço Fundo","MG","Poço Fundo","20/10/2021",7,7,0,2021,3151701
+"MG_Prata","MG","Prata","20/10/2021",1,1,0,2021,3152808
+"MG_Prata","MG","Prata","11/05/2021",52,52,0,2021,3152808
+"MG_Pratinha","MG","Pratinha","22/06/2021",9,9,0,2021,3153004
+"MG_Presidente Olegário","MG","Presidente Olegário","22/06/2021",3,2,0,2021,3153400
+"MG_Presidente Olegário","MG","Presidente Olegário","21/03/2022",4,4,NA,2022,3153400
+"MG_Queluzito","MG","Queluzito","03/07/2021",0,0,NA,2021,3153806
+"MG_Rio Vermelho","MG","Rio Vermelho","30/06/2021",4,4,0,2021,3156007
+"MG_Sacramento","MG","Sacramento","20/11/2021",4,4,0,2021,3156908
+"MG_Sacramento","MG","Sacramento","21/03/2022",5,5,NA,2022,3156908
+"MG_Santa Fé de Minas","MG","Santa Fé de Minas","31/01/2021",13,13,0,2021,3157609
+"MG_Santa Rita do Sapucaí","MG","Santa Rita do Sapucaí","22/07/2022",10,10,NA,2022,3159605
+"MG_Santana do Garambéu","MG","Santana do Garambéu","07/12/2022",12,12,NA,2022,3158706
+"MG_São Francisco","MG","São Francisco","30/12/2022",4,4,NA,2022,3161106
+"MG_São Francisco","MG","São Francisco","31/12/2022",1,1,NA,2022,3161106
+"MG_São Gotardo","MG","São Gotardo","15/01/2022",25,25,NA,2022,3162104
+"MG_São João del Rei","MG","São João del Rei","18/11/2021",1,1,0,2021,3162500
+"MG_São Pedro da União","MG","São Pedro da União","02/09/2021",6,6,0,2021,3163904
+"MG_São Sebastião da Bela Vista","MG","São Sebastião da Bela Vista","20/08/2021",2,2,0,2021,3164407
+"MG_São Sebastião do Paraíso","MG","São Sebastião do Paraíso","02/09/2021",7,7,0,2021,3164704
+"MG_Serranos","MG","Serranos","06/04/2022",3,3,NA,2022,3167004
+"MG_Tapira","MG","Tapira","02/03/2021",8,8,0,2021,3168101
+"MG_Tapira","MG","Tapira","30/12/2021",77,76,0,2021,3168101
+"MG_Tapira","MG","Tapira","31/01/2021",6,6,0,2021,3168101
+"MG_Tapira","MG","Tapira","27/07/2022",7,7,NA,2022,3168101
+"MG_Tapira","MG","Tapira","12/11/2021",6,6,0,2021,3168101
+"MG_Uberaba","MG","Uberaba","26/04/2022",10,9,NA,2022,3170107
+"MG_Uberaba","MG","Uberaba","31/12/2022",1,1,NA,2022,3170107
+"MG_Unaí","MG","Unaí","11/04/2022",2,2,NA,2022,3170404
+"MG_Varjão de Minas","MG","Varjão de Minas","28/01/2022",273,273,NA,2022,3170750
+"MG_Veríssimo","MG","Veríssimo","26/04/2022",34,34,NA,2022,3171105
+"MS_Anastácio","MS","Anastácio","19/05/2021",20,20,NA,2021,5000708
+"MS_Antônio João","MS","Antônio João","26/05/2021",11,11,4,2021,5000906
+"MS_Bela Vista","MS","Bela Vista","15/01/2022",7,7,0,2022,5002100
+"MS_Campo Grande","MS","Campo Grande","03/11/2021",3,3,NA,2021,5002704
+"MS_Corumbá","MS","Corumbá","30/12/2021",4,4,NA,2021,5003207
+"MS_Corumbá","MS","Corumbá","30/12/2021",2,2,NA,2021,5003207
+"MS_Corumbá","MS","Corumbá","13/06/2022",1,1,NA,2022,5003207
+"MS_Corumbá","MS","Corumbá","18/07/2022",5,5,0,2022,5003207
+"MS_Corumbá","MS","Corumbá","23/07/2022",3,3,NA,2022,5003207
+"MS_Corumbá","MS","Corumbá","20/10/2021",2,2,NA,2021,5003207
+"MS_Iguatemi","MS","Iguatemi","30/09/2022",44,44,NA,2022,5004304
+"MS_Naviraí","MS","Naviraí","27/06/2022",45,45,NA,2022,5005707
+"MS_Ponta Porã","MS","Ponta Porã","19/08/2021",8,8,NA,2021,5006606
+"MS_Ponta Porã","MS","Ponta Porã","20/04/2022",3,3,NA,2022,5006606
+"MS_Porto Murtinho","MS","Porto Murtinho","31/01/2021",3,3,NA,2021,5006903
+"MS_Porto Murtinho","MS","Porto Murtinho","23/07/2022",1,1,NA,2022,5006903
+"MS_Porto Murtinho","MS","Porto Murtinho","20/11/2021",5,5,NA,2021,5006903
+"MS_Porto Murtinho","MS","Porto Murtinho","02/02/2022",7,7,0,2022,5006903
+"MS_Sidrolândia","MS","Sidrolândia","31/01/2021",22,22,5,2021,5007901
+"MT_Alta Floresta","MT","Alta Floresta","22/07/2022",10,10,0,2022,5100250
+"MT_Bom Jesus do Araguaia","MT","Bom Jesus do Araguaia","23/11/2021",25,NA,NA,2021,5101852
+"MT_Bom Jesus do Araguaia","MT","Bom Jesus do Araguaia","23/03/2022",10,NA,NA,2022,5101852
+"MT_Cáceres","MT","Cáceres","31/12/2021",1,1,NA,2021,5102504
+"MT_Canabrava do Norte","MT","Canabrava do Norte","19/03/2022",16,3,NA,2022,5102694
+"MT_Guarantã do Norte","MT","Guarantã do Norte","15/09/2021",6,6,NA,2021,5104104
+"MT_Itaúba","MT","Itaúba","15/09/2021",5,5,NA,2021,5104559
+"MT_Juína","MT","Juína","25/02/2021",1,1,NA,2021,5105150
+"MT_Juína","MT","Juína","25/02/2021",1,1,NA,2021,5105150
+"MT_Nossa Senhora do Livramento","MT","Nossa Senhora do Livramento","11/05/2021",1,1,NA,2021,5106109
+"MT_Paranatinga","MT","Paranatinga","23/08/2022",14,14,NA,2022,5106307
+"MT_Pedra Preta","MT","Pedra Preta","27/07/2022",2,2,NA,2022,5106372
+"MT_Rosário Oeste","MT","Rosário Oeste","20/08/2021",2,2,NA,2021,5107701
+"MT_Vila Bela da Santíssima Trindade","MT","Vila Bela da Santíssima Trindade","22/07/2022",7,7,NA,2022,5105507
+"PA_Altamira","PA","Altamira","16/12/2022",NA,NA,NA,2022,1500602
+"PA_Cumaru do Norte","PA","Cumaru do Norte","01/06/2021",8,8,0,2021,1502764
+"PA_Cumaru do Norte","PA","Cumaru do Norte","01/06/2021",4,4,0,2021,1502764
+"PA_Cumaru do Norte","PA","Cumaru do Norte","26/01/2021",3,3,0,2021,1502764
+"PA_Cumaru do Norte","PA","Cumaru do Norte","01/06/2021",8,8,0,2021,1502764
+"PA_Cumaru do Norte","PA","Cumaru do Norte","01/06/2021",7,7,0,2021,1502764
+"PA_Cumaru do Norte","PA","Cumaru do Norte","26/08/2021",2,NA,0,2021,1502764
+"PA_Cumaru do Norte","PA","Cumaru do Norte","15/07/2021",3,3,0,2021,1502764
+"PA_Dom Eliseu","PA","Dom Eliseu","28/04/2021",6,6,2,2021,1502939
+"PA_Floresta do Araguaia","PA","Floresta do Araguaia","03/08/2021",22,0,1,2021,1503044
+"PA_Itupiranga","PA","Itupiranga","20/10/2021",5,5,0,2021,1503705
+"PA_Itupiranga","PA","Itupiranga","12/04/2022",6,6,NA,2022,1503705
+"PA_Itupiranga","PA","Itupiranga","22/10/2021",2,2,0,2021,1503705
+"PA_Nova Ipixuna","PA","Nova Ipixuna","20/10/2021",6,6,2,2021,1504976
+"PA_Novo Progresso","PA","Novo Progresso","04/10/2022",11,11,NA,2022,1505031
+"PA_Novo Repartimento","PA","Novo Repartimento","11/12/2021",5,5,0,2021,1505064
+"PA_Ourilândia do Norte","PA","Ourilândia do Norte","05/08/2021",83,NA,3,2021,1505437
+"PA_Ourilândia do Norte","PA","Ourilândia do Norte","27/07/2022",2,2,NA,2022,1505437
+"PA_Pacajá","PA","Pacajá","20/08/2021",4,4,0,2021,1505486
+"PA_Pacajá","PA","Pacajá","09/04/2022",1,1,0,2022,1505486
+"PA_Peixe-Boi","PA","Peixe-Boi","20/11/2021",15,15,0,2021,1505601
+"PA_Rio Maria","PA","Rio Maria","30/09/2021",4,4,0,2021,1506161
+"PA_Rio Maria","PA","Rio Maria","30/09/2021",8,8,0,2021,1506161
+"PA_Rio Maria","PA","Rio Maria","30/09/2021",10,10,0,2021,1506161
+"PA_Rondon do Pará","PA","Rondon do Pará","11/03/2022",3,3,0,2022,1506187
+"PA_Rondon do Pará","PA","Rondon do Pará","08/04/2022",1,1,NA,2022,1506187
+"PA_Santa Maria das Barreiras","PA","Santa Maria das Barreiras","30/10/2021",15,NA,0,2021,1506583
+"PA_São Félix do Xingu","PA","São Félix do Xingu","05/05/2022",13,NA,NA,2022,1507300
+"PA_São Félix do Xingu","PA","São Félix do Xingu","20/10/2021",3,2,0,2021,1507300
+"PA_São Félix do Xingu","PA","São Félix do Xingu","25/05/2021",30,0,0,2021,1507300
+"PA_São Félix do Xingu","PA","São Félix do Xingu","07/07/2021",5,5,1,2021,1507300
+"PA_São Félix do Xingu","PA","São Félix do Xingu","30/05/2021",3,3,0,2021,1507300
+"PA_São Geraldo do Araguaia","PA","São Geraldo do Araguaia","11/12/2021",1,1,0,2021,1507458
+"PA_Tucuruí","PA","Tucuruí","17/05/2022",55,NA,NA,2022,1508100
+"PA_Uruará","PA","Uruará","15/01/2022",12,9,0,2022,1508159
+"PA_Xinguara","PA","Xinguara","06/09/2021",13,NA,NA,2021,1508407
+"PE_Bezerros","PE","Bezerros","15/03/2021",1,1,NA,2021,2601904
+"PE_Cabo de Santo Agostinho","PE","Cabo de Santo Agostinho","31/01/2021",5,5,NA,2021,2602902
+"PE_Ibimirim","PE","Ibimirim","03/08/2021",6,6,NA,2021,2606606
+"PE_Santa Maria do Cambucá","PE","Santa Maria do Cambucá","27/07/2022",7,7,0,2022,2612703
+"PE_Santa Maria do Cambucá","PE","Santa Maria do Cambucá","27/07/2022",5,5,0,2022,2612703
+"PE_Sertânia","PE","Sertânia","03/08/2021",1,1,NA,2021,2614105
+"PI_Altos","PI","Altos","29/10/2022",11,5,NA,2022,2200400
+"PI_Amarante","PI","Amarante","29/10/2022",22,22,NA,2022,2200509
+"PI_Amarante","PI","Amarante","29/10/2022",13,13,NA,2022,2200509
+"PI_Batalha","PI","Batalha","23/08/2022",4,4,NA,2022,2201507
+"PI_Buriti dos Lopes","PI","Buriti dos Lopes","23/08/2022",7,7,NA,2022,2202000
+"PI_Campo Maior","PI","Campo Maior","23/08/2022",3,3,NA,2022,2202208
+"PI_Canto do Buriti","PI","Canto do Buriti","23/08/2022",7,7,NA,2022,2202307
+"PI_Canto do Buriti","PI","Canto do Buriti","23/08/2022",6,6,NA,2022,2202307
+"PI_Canto do Buriti","PI","Canto do Buriti","23/08/2022",8,8,NA,2022,2202307
+"PI_Castelo do Piauí","PI","Castelo do Piauí","23/08/2022",11,11,NA,2022,2202604
+"PI_Castelo do Piauí","PI","Castelo do Piauí","01/09/2021",10,10,1,2021,2202604
+"PI_Colônia do Gurguéia","PI","Colônia do Gurguéia","20/10/2021",6,6,1,2021,2202752
+"PI_Cristino Castro","PI","Cristino Castro","23/07/2022",3,3,NA,2022,2203107
+"PI_Currais","PI","Currais","07/08/2022",6,6,1,2022,2203230
+"PI_Currais","PI","Currais","07/08/2022",16,16,NA,2022,2203230
+"PI_Flores do Piauí","PI","Flores do Piauí","27/07/2022",3,3,NA,2022,2203800
+"PI_Flores do Piauí","PI","Flores do Piauí","23/08/2022",8,7,NA,2022,2203800
+"PI_Flores do Piauí","PI","Flores do Piauí","27/07/2022",4,4,NA,2022,2203800
+"PI_Isaías Coelho","PI","Isaías Coelho","29/10/2022",10,10,NA,2022,2204907
+"PI_Itaueira","PI","Itaueira","01/12/2021",11,4,0,2021,2205102
+"PI_Jatobá do Piauí","PI","Jatobá do Piauí","01/09/2021",8,8,0,2021,2205276
+"PI_Marcolândia","PI","Marcolândia","18/11/2021",3,3,3,2021,2205953
+"PI_Monsenhor Gil","PI","Monsenhor Gil","29/10/2022",2,2,NA,2022,2206407
+"PI_Palmeira do Piauí","PI","Palmeira do Piauí","07/08/2022",10,10,NA,2022,2207405
+"PI_Palmeira do Piauí","PI","Palmeira do Piauí","07/08/2022",4,4,NA,2022,2207405
+"PI_Patos do Piauí","PI","Patos do Piauí","23/08/2022",10,10,NA,2022,2207777
+"PI_Piracuruca","PI","Piracuruca","29/10/2022",10,3,NA,2022,2208304
+"PI_Santa Filomena","PI","Santa Filomena","07/08/2022",16,16,NA,2022,2209203
+"PR_Espigão Alto do Iguaçu","PR","Espigão Alto do Iguaçu","03/09/2021",1,1,NA,2021,4107546
+"PR_Irati","PR","Irati","19/09/2021",2,1,NA,2021,4110706
+"PR_Maringá","PR","Maringá","11/04/2022",2,2,NA,2022,4115200
+"PR_Mauá da Serra","PR","Mauá da Serra","27/07/2022",1,1,NA,2022,4115754
+"PR_Porto Vitória","PR","Porto Vitória","27/07/2022",3,3,NA,2022,4120309
+"PR_Tamboara","PR","Tamboara","31/01/2021",1,1,NA,2021,4126702
+"PR_Tijucas do Sul","PR","Tijucas do Sul","20/07/2022",1,1,NA,2022,4127601
+"RJ_Barra Mansa","RJ","Barra Mansa","15/01/2022",1,1,NA,2022,3300407
+"RN_Equador","RN","Equador","31/01/2021",11,11,0,2021,2403400
+"RN_Felipe Guerra","RN","Felipe Guerra","27/07/2022",4,4,0,2022,2403707
+"RN_Grossos","RN","Grossos","27/07/2022",6,6,0,2022,2404408
+"RN_Paraú","RN","Paraú","31/12/2022",15,15,0,2022,2408706
+"RN_Upanema","RN","Upanema","31/12/2022",5,5,0,2022,2414605
+"RO_Porto Velho","RO","Porto Velho","26/07/2022",43,29,2,2022,1100205
+"RO_Vilhena","RO","Vilhena","17/06/2022",2,2,NA,2022,1100304
+"RR_Caracaraí","RR","Caracaraí","24/11/2021",7,7,5,2021,1400209
+"RS_Bom Jesus","RS","Bom Jesus","27/07/2022",80,80,NA,2022,4302303
+"RS_Bom Jesus","RS","Bom Jesus","16/04/2022",100,NA,0,2022,4302303
+"RS_Flores da Cunha","RS","Flores da Cunha","30/12/2021",25,25,NA,2021,4308201
+"RS_Fontoura Xavier","RS","Fontoura Xavier","31/01/2021",3,3,NA,2021,4308300
+"RS_Jaguarão","RS","Jaguarão","20/04/2022",2,2,NA,2022,4311007
+"RS_Putinga","RS","Putinga","20/04/2022",4,4,NA,2022,4315206
+"RS_Quaraí","RS","Quaraí","15/03/2022",1,1,NA,2022,4315305
+"RS_Quaraí","RS","Quaraí","15/07/2021",1,1,NA,2021,4315305
+"RS_Santa Vitória do Palmar","RS","Santa Vitória do Palmar","20/04/2022",5,5,NA,2022,4317301
+"RS_São Borja","RS","São Borja","25/02/2022",17,12,1,2022,4318002
+"RS_São Borja","RS","São Borja","18/02/2022",4,4,0,2022,4318002
+"RS_São Francisco de Paula","RS","São Francisco de Paula","27/07/2022",14,14,NA,2022,4318200
+"RS_Serafina Corrêa","RS","Serafina Corrêa","15/07/2022",26,26,NA,2022,4320404
+"RS_Triunfo","RS","Triunfo","23/05/2021",18,18,NA,2021,4322004
+"RS_Venâncio Aires","RS","Venâncio Aires","31/01/2021",4,4,NA,2021,4322608
+"RS_Venâncio Aires","RS","Venâncio Aires","25/02/2021",11,9,5,2021,4322608
+"SC_Bom Retiro","SC","Bom Retiro","17/12/2021",4,4,NA,2021,4202602
+"SC_Caçador","SC","Caçador","30/01/2022",19,19,NA,2022,4203006
+"SC_São Joaquim","SC","São Joaquim","05/04/2022",22,22,NA,2022,4216503
+"SC_São Joaquim","SC","São Joaquim","05/04/2022",7,7,NA,2022,4216503
+"SC_São Joaquim","SC","São Joaquim","05/04/2022",17,17,NA,2022,4216503
+"SE_Canindé de São Francisco","SE","Canindé de São Francisco","30/05/2021",2,2,NA,2021,2801207
+"SE_Maruim","SE","Maruim","24/01/2022",11,11,NA,2022,2804003
+"SE_Neópolis","SE","Neópolis","27/07/2022",1,1,NA,2022,2804409
+"SP_Alfredo Marcondes","SP","Alfredo Marcondes","17/03/2022",5,5,NA,2022,3500808
+"SP_Cafelândia","SP","Cafelândia","23/06/2022",12,NA,NA,2022,3508801
+"SP_Guatapará","SP","Guatapará","20/10/2021",2,2,NA,2021,3518859
+"SP_Ituverava","SP","Ituverava","09/04/2021",22,22,NA,2021,3524105
+"SP_Ituverava","SP","Ituverava","09/04/2021",22,0,NA,2021,3524105
+"SP_Limeira","SP","Limeira","20/12/2021",3,3,NA,2021,3526902
+"SP_Mairiporã","SP","Mairiporã","15/01/2022",4,4,NA,2022,3528502
+"SP_Marília","SP","Marília","15/03/2022",12,12,NA,2022,3529005
+"SP_Martinópolis","SP","Martinópolis","15/03/2022",13,13,NA,2022,3529203
+"SP_Martinópolis","SP","Martinópolis","15/03/2022",8,8,NA,2022,3529203
+"SP_Patrocínio Paulista","SP","Patrocínio Paulista","27/07/2022",16,16,NA,2022,3536307
+"SP_Pedregulho","SP","Pedregulho","06/06/2021",56,56,10,2021,3537008
+"SP_Ribeirão Preto","SP","Ribeirão Preto","23/07/2022",18,18,NA,2022,3543402
+"SP_Salto de Pirapora","SP","Salto de Pirapora","23/08/2022",9,9,NA,2022,3545308
+"SP_São José do Rio Preto","SP","São José do Rio Preto","15/03/2022",2,2,NA,2022,3549805
+"TO_Arapoema","TO","Arapoema","23/10/2021",5,NA,NA,2021,1702307
+"TO_Couto Magalhães","TO","Couto Magalhães","05/04/2022",4,4,NA,2022,1706001
+"TO_Darcinópolis","TO","Darcinópolis","31/12/2022",1,1,0,2022,1706506
+"TO_Gurupi","TO","Gurupi","27/04/2021",8,NA,NA,2021,1709500
+"TO_Mateiros","TO","Mateiros","21/05/2021",7,NA,1,2021,1712702
+"TO_Monte Santo do Tocantins","TO","Monte Santo do Tocantins","31/01/2021",15,15,NA,2021,1713700
+"TO_Paraíso do Tocantins","TO","Paraíso do Tocantins","10/06/2022",2,2,NA,2022,1716109
+"TO_Paranã","TO","Paranã","07/01/2022",1,NA,NA,2022,1716208

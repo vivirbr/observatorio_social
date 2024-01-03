@@ -2,7 +2,7 @@
 library(tidyverse)
 library(httr)
 
-mun_br <- read.csv("data/deforestation/mapbiomas_alerts_mun.csv") %>% select(CD_MUN)
+mun_br <- read.csv("diversasocioambiental/data/deforestation/mapbiomas_alerts_mun.csv") %>% select(CD_MUN)
 
 qtds_2021 <- list()
 for(i in 1:nrow(mun_br)){
@@ -32,7 +32,4 @@ qtds_2022_rbind[is.na(qtds_2022_rbind)] <- 0
 
 full_radarsit <- data.frame(mun_br,qtds_2021_rbind,qtds_2022_rbind)
 
-sum(full_radarsit$qtds_2021_rbind)
-sum(full_radarsit$qtds_2022_rbind)
-
-write.csv(full_radarsit,"data/full_radarsit.csv",row.names=FALSE)
+write.csv(full_radarsit,"diversasocioambiental/data/forced_labor/full_radarsit.csv",row.names=FALSE)
