@@ -11,50 +11,37 @@ options(scipen=999)
 map <- read_municipality(year=2018)
 
 #Forced labor
-forcedlabor <- read.csv("diversasocioambiental/data/forced_labor/full_radarsit.csv")
+forcedlabor <- read.csv("diversasocioambiental/data/forced_labor/full_radarsit.csv") %>%
+                  pivot_longer(cols=c('qtds_2021_rbind', 'qtds_2022_rbind'),
+                                names_to='year',
+                                values_to='trabalhoescravo') %>%
+                  mutate(year=gsub("qtds_|_rbind","",year))
 
 map_forcedlabor<- merge(map,forcedlabor,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
 #------ Parameters -----#
 
 # extract quantiles
-quantiles_2021 <- map_forcedlabor %>% filter(qtds_2021_rbind!=0) %>%
-  pull(qtds_2021_rbind) %>%
+quantiles <- map_forcedlabor %>% filter(trabalhoescravo!=0) %>%
+  pull(trabalhoescravo) %>%
   quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
   signif(2) %>%
   as.vector() 
-quantiles_2021[length(quantiles_2021)]<-max(map_forcedlabor$qtds_2021_rbind)
-
-quantiles_2022 <- map_forcedlabor %>% filter(qtds_2022_rbind!=0) %>%
-  pull(qtds_2022_rbind) %>%
-  quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
-  signif(2) %>%
-  as.vector() 
-quantiles_2022[length(quantiles_2022)]<-500
+quantiles[length(quantiles)]<-max(map_forcedlabor$trabalhoescravo, na.rm=TRUE)
 
 # here we create custom labels
-labels_2021 <- imap_chr(quantiles_2021, function(., idx){
-  return(paste0(round(quantiles_2021[idx], 0),
+labels <- imap_chr(quantiles, function(., idx){
+  return(paste0(round(quantiles[idx], 0),
                              " – ",
-                             round(quantiles_2021[idx + 1], 0)))
+                             round(quantiles[idx + 1], 0)))
 })
-labels_2021 <- labels_2021[1:length(labels_2021) - 1]
+labels <- labels[1:length(labels) - 1]
 
-labels_2022 <- imap_chr(quantiles_2022, function(., idx){
-  return(paste0(round(quantiles_2022[idx], 0),
-                             " – ",
-                             round(quantiles_2022[idx + 1], 0)))
-})
-labels_2022 <- labels_2022[1:length(labels_2022) - 1]
 
 map_forcedlabor %<>%
-  mutate(mean_quantiles_2021 = cut(qtds_2021_rbind,
-                               breaks = quantiles_2021,
-                               labels = labels_2021,
-                               include.lowest = T),
-         mean_quantiles_2022 = cut(qtds_2022_rbind,
-                               breaks = quantiles_2022,
-                               labels = labels_2022,
+  mutate(mean_quantiles = cut(trabalhoescravo,
+                               breaks = quantiles,
+                               labels = labels,
                                include.lowest = T))
 
 #------- PLOT --------#
@@ -113,7 +100,7 @@ default_background_color<-"transparent"
 png(filename="diversasocioambiental/map/plots/forced_labor_2021.png", 
              width = 3000, height = 3000, units = "px", res = 300)
 ggplot(
-  data = map_forcedlabor
+  data = map_forcedlabor %>% filter(year==2021)
     ) +
   geom_sf(
     data = map,
@@ -125,7 +112,7 @@ ggplot(
               guide = F) + 
   geom_sf(
     mapping = aes(
-      fill = mean_quantiles_2021
+      fill = mean_quantiles
       ),
     color = "white",
     size = 0.1
@@ -156,7 +143,7 @@ dev.off()
 png(filename="diversasocioambiental/map/plots/forced_labor_2022.png", 
              width = 3000, height = 3000, units = "px", res = 300)
 ggplot(
-  data = map_forcedlabor
+  data = map_forcedlabor %>% filter(year==2022)
     ) +
   geom_sf(
     data = map,
@@ -168,7 +155,7 @@ ggplot(
               guide = F) + 
   geom_sf(
     mapping = aes(
-      fill = mean_quantiles_2022
+      fill = mean_quantiles
       ),
     color = "white",
     size = 0.1

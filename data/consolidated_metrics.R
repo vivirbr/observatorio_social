@@ -14,16 +14,15 @@ alerts <- read.csv("diversasocioambiental/data/deforestation/mapbiomas_alerts_mu
               mutate(year=gsub("mapbiomas_alerts_","",year),
                      deforestation=round(deforestation,0))
 
-#Forced labor
+#CPT
 agua <- read.csv("diversasocioambiental/data/cpt/from_cpt/w_geocodes/conflitos_agua.csv")
 agua_freq <- data.frame(table(agua$CD_MUN,agua$Ano)) %>%
-             rename(CD_MUN="Var1",year="Var2",freq="aguacasos")
+             rename(CD_MUN="Var1",year="Var2",freq="Freq")
 
-
-violencia <- read.csv("diversasocioambiental/data/cpt/from_cpt/w_geocodes/violencia_pessoa.csv")
-violencia <- violencia %>% 
+terra <- read.csv("diversasocioambiental/data/cpt/from_cpt/w_geocodes/conflitos_terra.csv")
+terra <- terra %>% 
               group_by(CD_MUN,Ano) %>% 
-              summarize(violencia=sum(Numero.De.Pessoas)) %>% 
+              summarize(terra=sum(Numero.De.Conflitos)) %>% 
               rename(year="Ano")
 
 #Forced labor
@@ -35,7 +34,7 @@ forcedlabor <- read.csv("diversasocioambiental/data/forced_labor/full_radarsit.c
 
 
 # Merging all data sources
-full<- Reduce(function(...) merge(..., by=c("CD_MUN","year"),all=T),list(alerts,agua_freq,violencia,forcedlabor))
+full<- Reduce(function(...) merge(..., by=c("CD_MUN","year"),all=T),list(alerts,agua_freq,terra,forcedlabor))
 full[is.na(full)] <- 0
 
 # Normalizing the data

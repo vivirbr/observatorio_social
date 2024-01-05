@@ -8,6 +8,40 @@ mun_br <- read.csv("diversasocioambiental/data/deforestation/mapbiomas_deforesta
                    mutate(UF_MUN = paste(SIGLA_UF,NM_MUN,sep="_"))
 
 #---------------------------#
+#----Conflitos por Terra----#
+#---------------------------#
+terra <- read.csv("diversasocioambiental/data/cpt/from_cpt/conflitos_terra_2014_2023_1_semestre.csv") %>%
+            filter(Ano>2020 & Ano < 2023) %>%
+            select(Ano,Uf.Sigla,Municipio.Primario,Numero.De.Conflitos) 
+
+terra$Municipio.Primario <- gsub("\\s*\\([^\\)]+\\)","",terra$Municipio.Primario)
+
+terra <- terra %>% mutate(municipio = paste(Uf.Sigla,Municipio.Primario,sep="_"))
+
+terra_unique_mun <-  data.frame(municipio = unique(terra$municipio),
+                     id1 = seq(1:length(unique(terra$municipio))))
+
+terra_join <- merge_plus(terra_unique_mun, mun_br, 
+                                by.x='municipio',
+                                by.y='UF_MUN',
+                                unique_key_1 = "id1",
+                                unique_key_2 = "id2")
+
+terra_join_full <- plyr::rbind.fill(terra_join$matches,terra_join$data1_nomatch)
+
+# Fixing no matches manually 
+terra_join_full$CD_MUN<-ifelse(terra_join_full$id1==79,5107800,terra_join_full$CD_MUN)
+terra_join_full$CD_MUN<-ifelse(terra_join_full$id1==448,3522158,terra_join_full$CD_MUN)
+terra_join_full$CD_MUN<-ifelse(terra_join_full$id1==496,4216057,terra_join_full$CD_MUN)
+terra_join_full$CD_MUN<-ifelse(terra_join_full$id1==547,2922250,terra_join_full$CD_MUN)
+terra_join_full$CD_MUN<-ifelse(terra_join_full$id1==712,4315503,terra_join_full$CD_MUN)
+
+# Assembling all parts
+terra_final <- merge(terra,terra_join_full %>% select(municipio,CD_MUN),by="municipio",all.x=TRUE)
+
+write.csv(terra_final,"diversasocioambiental/data/cpt/from_cpt/w_geocodes/conflitos_terra.csv",row.names=FALSE)
+
+#---------------------------#
 #----Conflitos por Agua----#
 #---------------------------#
 agua <- read.csv("diversasocioambiental/data/cpt/from_cpt/conflitos_agua_2014_2023_1_semestre.csv") %>%

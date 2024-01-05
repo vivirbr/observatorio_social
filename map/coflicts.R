@@ -11,21 +11,22 @@ options(scipen=999)
 #BR map - municipalities
 map <- read_municipality(year=2018)
 
-#Forced labor
+#CPT
 agua <- read.csv("diversasocioambiental/data/cpt/from_cpt/w_geocodes/conflitos_agua.csv")
 agua_freq <- melt(table(agua$CD_MUN,agua$Ano))
 colnames(agua_freq) <- c("CD_MUN","Ano","Freq")
+
+terra <- read.csv("diversasocioambiental/data/cpt/from_cpt/w_geocodes/conflitos_terra.csv")
+terra <- terra %>% group_by(CD_MUN,Ano) %>% summarize(conflitos=sum(Numero.De.Conflitos))
 
 violencia <- read.csv("diversasocioambiental/data/cpt/from_cpt/w_geocodes/violencia_pessoa.csv")
 violencia <- violencia %>% group_by(CD_MUN,Ano) %>% summarize(pessoas=sum(Numero.De.Pessoas))
 
 map_agua <- merge(map,agua_freq,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
-map_agua_2021 <- map_agua %>% filter(Ano==2021)
-map_agua_2022 <- map_agua %>% filter(Ano==2022)
+
+map_terra <- merge(map,terra,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
 map_violencia <- merge(map,violencia,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
-map_violencia_2021 <- map_violencia %>% filter(Ano==2021)
-map_violencia_2022 <- map_violencia %>% filter(Ano==2022)
 
 #---------------------------#
 #----Conflitos por Agua----#
@@ -34,46 +35,27 @@ map_violencia_2022 <- map_violencia %>% filter(Ano==2022)
 #------ Parameters -----#
 
 # extract quantiles
-quantiles_2021 <- map_agua_2021 %>% filter(Freq!=0) %>%
+quantiles <- map_agua %>% filter(Freq!=0) %>%
   pull(Freq) %>%
-  quantile(probs = c(0, 0.8, 0.9, 1)) %>%
+  quantile(probs = c(0, 0.8, 0.95, 1)) %>%
   signif(2) %>%
   as.vector() 
-quantiles_2021[length(quantiles_2021)]<-max(map_agua_2021$Freq)
-
-quantiles_2022 <- map_agua_2022 %>% filter(Freq!=0) %>%
-  pull(Freq) %>%
-  quantile(probs = c(0, 0.8, 0.9, 1)) %>%
-  signif(2) %>%
-  as.vector() 
-quantiles_2022[length(quantiles_2022)]<-max(map_agua_2022$Freq)
+quantiles[length(quantiles)]<-max(map_agua$Freq,na.rm=T)
 
 # here we create custom labels
-labels_2021 <- imap_chr(quantiles_2021, function(., idx){
-  return(paste0(round(quantiles_2021[idx], 0),
+labels <- imap_chr(quantiles, function(., idx){
+  return(paste0(round(quantiles[idx], 0),
                              " – ",
-                             round(quantiles_2021[idx + 1], 0)))
+                             round(quantiles[idx + 1], 0)))
 })
-labels_2021 <- labels_2021[1:length(labels_2021) - 1]
+labels <- labels[1:length(labels) - 1]
 
-labels_2022 <- imap_chr(quantiles_2022, function(., idx){
-  return(paste0(round(quantiles_2022[idx], 0),
-                             " – ",
-                             round(quantiles_2022[idx + 1], 0)))
-})
-labels_2022 <- labels_2022[1:length(labels_2022) - 1]
-
-map_agua_2021 %<>%
-  mutate(mean_quantiles_2021 = cut(Freq,
-                               breaks = quantiles_2021,
-                               labels = labels_2021,
+map_agua %<>%
+  mutate(mean_quantiles = cut(Freq,
+                               breaks = quantiles,
+                               labels = labels,
                                include.lowest = T))
 
-map_agua_2022 %<>%
-  mutate(mean_quantiles_2022 = cut(Freq,
-                               breaks = quantiles_2022,
-                               labels = labels_2022,
-                               include.lowest = T))
 
 #------- PLOT --------#
 
@@ -131,7 +113,7 @@ default_background_color<-"transparent"
 png(filename="diversasocioambiental/map/plots/conflicts_water_2021.png", 
              width = 3000, height = 3000, units = "px", res = 300)
 ggplot(
-  data = map_agua_2021
+  data = map_agua %>% filter(Ano==2021)
     ) +
   geom_sf(
     data = map,
@@ -143,7 +125,7 @@ ggplot(
               guide = F) + 
   geom_sf(
     mapping = aes(
-      fill = mean_quantiles_2021
+      fill = mean_quantiles
       ),
     color = "white",
     size = 0.1
@@ -174,7 +156,7 @@ dev.off()
 png(filename="diversasocioambiental/map/plots/conflicts_water_2022.png", 
              width = 3000, height = 3000, units = "px", res = 300)
 ggplot(
-  data = map_agua_2022
+  data = map_agua %>% filter(Ano==2022)
     ) +
   geom_sf(
     data = map,
@@ -186,7 +168,7 @@ ggplot(
               guide = F) + 
   geom_sf(
     mapping = aes(
-      fill = mean_quantiles_2022
+      fill = mean_quantiles
       ),
     color = "white",
     size = 0.1
@@ -214,59 +196,41 @@ ggplot(
   theme_map()
 dev.off()
 
-
-#----------------------------------#
-#----Violencia contra a pessoa ----#
-#----------------------------------#
+#---------------------------#
+#----Conflitos por Terra----#
+#---------------------------#
 
 #------ Parameters -----#
 
 # extract quantiles
-quantiles_2021 <- map_violencia_2021 %>% filter(pessoas!=0) %>%
-  pull(pessoas) %>%
-  quantile(probs = c(0, 0.5, 0.9, 0.99, 1)) %>%
+quantiles <- map_terra %>% filter(conflitos!=0) %>%
+  pull(conflitos) %>%
+  quantile(probs = c(0, 0.8, 0.95, 1)) %>%
   signif(2) %>%
   as.vector() 
-quantiles_2021[length(quantiles_2021)]<-max(map_violencia_2021$pessoas)
-
-quantiles_2022 <- map_violencia_2022 %>% filter(pessoas!=0) %>%
-  pull(pessoas) %>%
-  quantile(probs = c(0, 0.5, 0.9, 0.99, 1)) %>%
-  signif(2) %>%
-  as.vector() 
-quantiles_2022[length(quantiles_2022)]<-max(map_violencia_2022$pessoas)
+quantiles[length(quantiles)]<-max(map_terra$conflitos,na.rm=T)
 
 # here we create custom labels
-labels_2021 <- imap_chr(quantiles_2021, function(., idx){
-  return(paste0(round(quantiles_2021[idx], 0),
+labels <- imap_chr(quantiles, function(., idx){
+  return(paste0(round(quantiles[idx], 0),
                              " – ",
-                             round(quantiles_2021[idx + 1], 0)))
+                             round(quantiles[idx + 1], 0)))
 })
-labels_2021 <- labels_2021[1:length(labels_2021) - 1]
+labels <- labels[1:length(labels) - 1]
 
-labels_2022 <- imap_chr(quantiles_2022, function(., idx){
-  return(paste0(round(quantiles_2022[idx], 0),
-                             " – ",
-                             round(quantiles_2022[idx + 1], 0)))
-})
-labels_2022 <- labels_2022[1:length(labels_2022) - 1]
+map_terra %<>%
+  mutate(mean_quantiles = cut(conflitos,
+                               breaks = quantiles,
+                               labels = labels,
+                               include.lowest = T))
 
-map_violencia_2021 %<>%
-  mutate(mean_quantiles_2021 = cut(pessoas,
-                               breaks = quantiles_2021,
-                               labels = labels_2021,
-                               include.lowest = T))
-map_violencia_2022 %<>%
-  mutate(mean_quantiles_2022 = cut(pessoas,
-                               breaks = quantiles_2022,
-                               labels = labels_2022,
-                               include.lowest = T))
+
 #------- PLOT --------#
 
-png(filename="diversasocioambiental/map/plots/violence_2021.png", 
+png(filename="diversasocioambiental/map/plots/conflicts_land_2021.png", 
              width = 3000, height = 3000, units = "px", res = 300)
 ggplot(
-  data = map_violencia_2021
+  data = map_terra %>% filter(Ano==2021)
     ) +
   geom_sf(
     data = map,
@@ -278,7 +242,125 @@ ggplot(
               guide = F) + 
   geom_sf(
     mapping = aes(
-      fill = mean_quantiles_2021
+      fill = mean_quantiles
+      ),
+    color = "white",
+    size = 0.1
+  ) +
+  scale_fill_viridis(
+    option = "rocket",
+    name = "Conflicts over land\nnumber of conflicts",
+    alpha = 0.9, 
+    begin = 0.1, 
+    end = 0.9,
+    discrete = T,
+    direction = -1,
+    na.translate = F,
+    guide = guide_legend(
+     keyheight = unit(5, units = "mm"),
+     title.position = "top",
+     reverse = T
+  )) +
+  # add titles
+  labs(x = NULL,
+       y = NULL,
+       title = "Number of conflicts over land in 2021",
+       subtitle = "As reported by CPT") +
+  # add theme
+  theme_map()
+dev.off()
+
+png(filename="diversasocioambiental/map/plots/conflicts_land_2022.png", 
+             width = 3000, height = 3000, units = "px", res = 300)
+ggplot(
+  data = map_terra %>% filter(Ano==2022)
+    ) +
+  geom_sf(
+    data = map,
+    fill = "#d1d1d1",
+    color = "white"
+  ) +
+  scale_alpha(name = "",
+              range = c(0.6, 0),
+              guide = F) + 
+  geom_sf(
+    mapping = aes(
+      fill = mean_quantiles
+      ),
+    color = "white",
+    size = 0.1
+  ) +
+  scale_fill_viridis(
+    option = "rocket",
+    name = "Conflicts over land\nnumber of conflicts",
+    alpha = 0.9, 
+    begin = 0.1, 
+    end = 0.9,
+    discrete = T,
+    direction = -1,
+    na.translate = F,
+    guide = guide_legend(
+     keyheight = unit(5, units = "mm"),
+     title.position = "top",
+     reverse = T
+  )) +
+  # add titles
+  labs(x = NULL,
+       y = NULL,
+       title = "Number of conflicts over land in 2022",
+       subtitle = "As reported by CPT") +
+  # add theme
+  theme_map()
+dev.off()
+
+
+#----------------------------------#
+#----Violencia contra a pessoa ----#
+#----------------------------------#
+
+#------ Parameters -----#
+
+# extract quantiles
+quantiles <- map_violencia %>% filter(pessoas!=0) %>%
+  pull(pessoas) %>%
+  quantile(probs = c(0, 0.5, 0.9, 0.99, 1)) %>%
+  signif(2) %>%
+  as.vector() 
+quantiles[length(quantiles)]<-max(map_violencia$pessoas,na.rm=TRUE)
+
+
+# here we create custom labels
+labels <- imap_chr(quantiles, function(., idx){
+  return(paste0(round(quantiles[idx], 0),
+                             " – ",
+                             round(quantiles[idx + 1], 0)))
+})
+labels <- labels[1:length(labels) - 1]
+
+map_violencia %<>%
+  mutate(mean_quantiles = cut(pessoas,
+                               breaks = quantiles,
+                               labels = labels,
+                               include.lowest = T))
+
+#------- PLOT --------#
+
+png(filename="diversasocioambiental/map/plots/violence_2021.png", 
+             width = 3000, height = 3000, units = "px", res = 300)
+ggplot(
+  data = map_violencia %>% filter(Ano == 2021)
+    ) +
+  geom_sf(
+    data = map,
+    fill = "#d1d1d1",
+    color = "white"
+  ) +
+  scale_alpha(name = "",
+              range = c(0.6, 0),
+              guide = F) + 
+  geom_sf(
+    mapping = aes(
+      fill = mean_quantiles
       ),
     color = "white",
     size = 0.1
@@ -309,7 +391,7 @@ dev.off()
 png(filename="diversasocioambiental/map/plots/violence_2022.png", 
              width = 3000, height = 3000, units = "px", res = 300)
 ggplot(
-  data = map_violencia_2022
+  data = map_violencia %>% filter(Ano == 2022)
     ) +
   geom_sf(
     data = map,
@@ -321,7 +403,7 @@ ggplot(
               guide = F) + 
   geom_sf(
     mapping = aes(
-      fill = mean_quantiles_2022
+      fill = mean_quantiles
       ),
     color = "white",
     size = 0.1
