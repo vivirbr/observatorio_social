@@ -1,0 +1,420 @@
+"municipio","Ano","Uf.Sigla","Municipio.Primario","Numero.De.Pessoas","Categoria.Vitima.Violencia","Eixos.De.Violencia","CD_MUN"
+"AL_Atalaia","2022","AL","Atalaia",1,"Sem Terra","Terra",2700409
+"AL_São Luís do Quitunde","2022","AL","São Luís do Quitunde",2,"Sem Terra","Terra",2708501
+"AM_Atalaia do Norte","2022","AM","Atalaia do Norte",1,"Jornalista","Água",1300201
+"AM_Atalaia do Norte","2022","AM","Atalaia do Norte",2,"Indígenas","Terra",1300201
+"AM_Atalaia do Norte","2022","AM","Atalaia do Norte",1,"Indigenista","Terra",1300201
+"AM_Atalaia do Norte","2022","AM","Atalaia do Norte",1,"Indígenas","Terra",1300201
+"AM_Atalaia do Norte","2022","AM","Atalaia do Norte",1,"Indigenista","Água",1300201
+"AM_Atalaia do Norte","2022","AM","Atalaia do Norte",2,"Indígenas","Terra",1300201
+"AM_Boca do Acre","2022","AM","Boca do Acre",1,"Assentado","Terra",1300706
+"AM_Boca do Acre","2022","AM","Boca do Acre",1,"Assentado","Terra",1300706
+"AM_Boca do Acre","2022","AM","Boca do Acre",1,"Assentado","Terra",1300706
+"AM_Boca do Acre","2022","AM","Boca do Acre",2,"Posseiro","Terra",1300706
+"AM_Boca do Acre","2022","AM","Boca do Acre",1,"Posseiro","Terra",1300706
+"AM_Boca do Acre","2022","AM","Boca do Acre",1,"Posseiro","Terra",1300706
+"AM_Boca do Acre","2022","AM","Boca do Acre",6,"Posseiro","Terra",1300706
+"AM_Humaitá","2021","AM","Humaitá",1,"Indígenas","Terra",1301704
+"AM_Itacoatiara","2022","AM","Itacoatiara",1,"Ribeirinho","Terra",1301902
+"AM_Itacoatiara","2022","AM","Itacoatiara",1,"Ribeirinho","Terra",1301902
+"AM_Itacoatiara","2022","AM","Itacoatiara",1,"Ribeirinho","Terra",1301902
+"AM_Itacoatiara","2022","AM","Itacoatiara",1,"Agente pastoral","Terra",1301902
+"AM_Itacoatiara","2022","AM","Itacoatiara",1,"Agente pastoral","Terra",1301902
+"AM_Itacoatiara","2022","AM","Itacoatiara",1,"Ribeirinho","Terra",1301902
+"AM_Manicoré","2022","AM","Manicoré",1,"Extrativista","Terra",1302702
+"AM_Manicoré","2022","AM","Manicoré",1,"Extrativista","Água",1302702
+"AM_Manicoré","2022","AM","Manicoré",1,"Extrativista","Água",1302702
+"AM_Presidente Figueiredo","2022","AM","Presidente Figueiredo",1,"Posseiro","Terra",1303536
+"AP_Cutias","2022","AP","Cutias",1,"Assentado","Terra",1600212
+"AP_Cutias","2022","AP","Cutias",1,"Assentado","Terra",1600212
+"AP_Cutias","2022","AP","Cutias",1,"Assentado","Terra",1600212
+"AP_Cutias","2022","AP","Cutias",1,"Assentado","Terra",1600212
+"AP_Cutias","2022","AP","Cutias",1,"Assentado","Terra",1600212
+"AP_Cutias","2022","AP","Cutias",1,"Assentado","Terra",1600212
+"AP_Pracuúba","2022","AP","Pracuúba",1,"Pescador","Água",1600550
+"AP_Pracuúba","2022","AP","Pracuúba",1,"Pescador","Água",1600550
+"BA_Barra","2021","BA","Barra",1,"Camponês de fundo e fecho de pasto","Terra",2902708
+"BA_Bom Jesus da Lapa","2021","BA","Bom Jesus da Lapa",1,"Quilombola","Terra",2903904
+"BA_Brotas de Macaúbas","2021","BA","Brotas de Macaúbas",1,"Camponês de fundo e fecho de pasto","Terra",2904506
+"BA_Brotas de Macaúbas","2021","BA","Brotas de Macaúbas",1,"Camponês de fundo e fecho de pasto","Terra",2904506
+"BA_Brotas de Macaúbas","2021","BA","Brotas de Macaúbas",1,"Camponês de fundo e fecho de pasto","Terra",2904506
+"BA_Correntina","2021","BA","Correntina",1,"Camponês de fundo e fecho de pasto","Terra",2909307
+"BA_Correntina","2021","BA","Correntina",1,"Camponês de fundo e fecho de pasto","Terra",2909307
+"BA_Euclides da Cunha","2022","BA","Euclides da Cunha",6,"Indígenas","Terra",2910701
+"BA_Formosa do Rio Preto","2021","BA","Formosa do Rio Preto",1,"Camponês de fundo e fecho de pasto","Terra",2911105
+"BA_Formosa do Rio Preto","2021","BA","Formosa do Rio Preto",1,"Camponês de fundo e fecho de pasto","Terra",2911105
+"BA_Ibipeba","2021","BA","Ibipeba",1,"Camponês de fundo e fecho de pasto","Terra",2912400
+"BA_Itaeté","2022","BA","Itaeté",1,"Sem Terra","Terra",2915007
+"BA_Itaeté","2022","BA","Itaeté",2,"Sem Terra","Terra",2915007
+"BA_Pau Brasil","2022","BA","Pau Brasil",1,"Indígenas","Terra",2923902
+"BA_Paulo Afonso","2022","BA","Paulo Afonso",1,"Indígenas","Terra",2924009
+"BA_Porto Seguro","2021","BA","Porto Seguro",1,"Indígenas","Terra",2925303
+"BA_Porto Seguro","2021","BA","Porto Seguro",1,"Indígenas","Terra",2925303
+"BA_Santo Amaro","2022","BA","Santo Amaro",3,"Quilombola","Terra",2928604
+"BA_Serra Dourada","2022","BA","Serra Dourada",1,"Camponês de fundo e fecho de pasto","Terra",2930303
+"BA_Serra Dourada","2022","BA","Serra Dourada",1,"Camponês de fundo e fecho de pasto","Terra",2930303
+"BA_Serra Dourada","2022","BA","Serra Dourada",1,"Camponês de fundo e fecho de pasto","Terra",2930303
+"BA_Serra Dourada","2022","BA","Serra Dourada",1,"Camponês de fundo e fecho de pasto","Terra",2930303
+"BA_Serra Dourada","2022","BA","Serra Dourada",1,"Camponês de fundo e fecho de pasto","Terra",2930303
+"BA_Souto Soares","2021","BA","Souto Soares",1,"Camponês de fundo e fecho de pasto","Terra",2930808
+"BA_Souto Soares","2021","BA","Souto Soares",1,"Camponês de fundo e fecho de pasto","Terra",2930808
+"BA_Souto Soares","2021","BA","Souto Soares",1,"Camponês de fundo e fecho de pasto","Terra",2930808
+"BA_Souto Soares","2021","BA","Souto Soares",1,"Camponês de fundo e fecho de pasto","Terra",2930808
+"BA_Souto Soares","2021","BA","Souto Soares",1,"Camponês de fundo e fecho de pasto","Terra",2930808
+"CE_Aquiraz","2022","CE","Aquiraz",2,"Indígenas","Terra",2301000
+"CE_Aracati","2021","CE","Aracati",4,"Quilombola","Terra",2301109
+"DF_Brasília","2022","DF","Brasília",2,"Sem Terra","Terra",5300108
+"ES_Conceição da Barra","2022","ES","Conceição da Barra",1,"Quilombola","Terra",3201605
+"GO_Baliza","2022","GO","Baliza",1,"Assentado","Terra",5203104
+"GO_Baliza","2022","GO","Baliza",2,"Assentado","Terra",5203104
+"GO_Bela Vista de Goiás","2021","GO","Bela Vista de Goiás",47,"Trabalhador Rural","Trabalhista",5203302
+"GO_Caiapônia","2021","GO","Caiapônia",1,"Quilombola","Terra",5204409
+"GO_Caiapônia","2021","GO","Caiapônia",1,"Quilombola","Terra",5204409
+"GO_Catalão","2022","GO","Catalão",1,"Trabalhador Assalariado","Trabalhista",5205109
+"GO_Formosa","2022","GO","Formosa",1,"Sem Terra","Terra",5208004
+"GO_Goiás","2022","GO","Goiás",1,"Trabalhador Rural","Trabalhista",5208905
+"GO_Iaciara","2022","GO","Iaciara",1,"Quilombola","Terra",5209903
+"GO_Morro Agudo de Goiás","2022","GO","Morro Agudo de Goiás",2,"Sem Terra","Terra",5213855
+"GO_Morro Agudo de Goiás","2022","GO","Morro Agudo de Goiás",1,"Sem Terra","Terra",5213855
+"GO_Morro Agudo de Goiás","2022","GO","Morro Agudo de Goiás",1,"Sem Terra","Terra",5213855
+"GO_Piranhas","2021","GO","Piranhas",1,"Trabalhador Rural","Trabalhista",5217203
+"GO_Silvânia","2022","GO","Silvânia",2,"Pequeno proprietário","Terra",5220603
+"MA_Amarante do Maranhão","2021","MA","Amarante do Maranhão",1,"Indígenas","Terra",2100600
+"MA_Araguanã","2022","MA","Araguanã",1,"Indígenas","Terra",2100873
+"MA_Araguanã","2022","MA","Araguanã",1,"Indígenas","Terra",2100873
+"MA_Arari","2022","MA","Arari",1,"Quilombola","Terra",2101004
+"MA_Arari","2022","MA","Arari",1,"Quilombola","Terra",2101004
+"MA_Arari","2022","MA","Arari",1,"Quilombola","Terra",2101004
+"MA_Balsas","2022","MA","Balsas",1,"Assentado","Terra",2101400
+"MA_Balsas","2022","MA","Balsas",1,"Assentado","Terra",2101400
+"MA_Barra do Corda","2022","MA","Barra do Corda",1,"Posseiro","Terra",2101608
+"MA_Barra do Corda","2022","MA","Barra do Corda",1,"Posseiro","Terra",2101608
+"MA_Buriti","2021","MA","Buriti",1,"Posseiro","Terra",2102200
+"MA_Buriti","2021","MA","Buriti",1,"Posseiro","Terra",2102200
+"MA_Buriti","2021","MA","Buriti",1,"Posseiro","Terra",2102200
+"MA_Buriti","2021","MA","Buriti",4,"Posseiro","Terra",2102200
+"MA_Cândido Mendes","2021","MA","Cândido Mendes",1,"Atingido por barragem","Água",2102606
+"MA_Cândido Mendes","2021","MA","Cândido Mendes",1,"Atingido por barragem","Água",2102606
+"MA_Codó","2021","MA","Codó",1,"Quilombola","Terra",2103307
+"MA_Codó","2022","MA","Codó",1,"Quilombola","Terra",2103307
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2021","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Formosa da Serra Negra","2022","MA","Formosa da Serra Negra",1,"Posseiro","Terra",2104099
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Itapecuru Mirim","2021","MA","Itapecuru Mirim",1,"Quilombola","Terra",2105401
+"MA_Junco do Maranhão","2021","MA","Junco do Maranhão",1,"Posseiro","Terra",2105658
+"MA_Junco do Maranhão","2021","MA","Junco do Maranhão",1,"Posseiro","Terra",2105658
+"MA_Matões","2022","MA","Matões",1,"Quilombola","Terra",2106607
+"MA_Parnarama","2021","MA","Parnarama",1,"Quilombola","Terra",2107803
+"MA_Parnarama","2021","MA","Parnarama",1,"Quilombola","Terra",2107803
+"MA_Pastos Bons","2022","MA","Pastos Bons",1,"Quilombola","Terra",2108009
+"MA_Pinheiro","2022","MA","Pinheiro",1,"Posseiro","Terra",2108603
+"MA_Riachão","2022","MA","Riachão",1,"Posseiro","Terra",2109502
+"MA_São Benedito do Rio Preto","2022","MA","São Benedito do Rio Preto",1,"Posseiro","Terra",2110401
+"MA_São Benedito do Rio Preto","2022","MA","São Benedito do Rio Preto",1,"Posseiro","Terra",2110401
+"MA_São Benedito do Rio Preto","2022","MA","São Benedito do Rio Preto",1,"Posseiro","Terra",2110401
+"MA_São João do Soter","2022","MA","São João do Soter",1,"Quilombola","Terra",2111078
+"MA_São Luís","2021","MA","São Luís",1,"Advogado/a","Terra",2111300
+"MG_Brumadinho","2022","MG","Brumadinho",1,"Advogado/a","Terra",3109006
+"MG_Brumadinho","2022","MG","Brumadinho",2,"Religioso","Terra",3109006
+"MG_Brumadinho","2022","MG","Brumadinho",1,"Indígenas","Terra",3109006
+"MG_Córrego Danta","2021","MG","Córrego Danta",1,"Sem Terra","Terra",3119807
+"MG_Grão Mogol","2022","MG","Grão Mogol",1,"Geraizeiro","Terra",3127800
+"MG_Grão Mogol","2022","MG","Grão Mogol",1,"Geraizeiro","Terra",3127800
+"MG_Grão Mogol","2022","MG","Grão Mogol",1,"Geraizeiro","Terra",3127800
+"MG_Grão Mogol","2022","MG","Grão Mogol",1,"Geraizeiro","Terra",3127800
+"MG_Grão Mogol","2021","MG","Grão Mogol",1,"Pistoleiro","Terra",3127800
+"MG_Januária","2022","MG","Januária",2,"Quilombola","Terra",3135209
+"MG_Januária","2022","MG","Januária",12,"Agente pastoral","Terra",3135209
+"MG_Januária","2021","MG","Januária",1,"Quilombola","Terra",3135209
+"MG_Januária","2021","MG","Januária",1,"Quilombola","Terra",3135209
+"MG_Januária","2022","MG","Januária",2,"Quilombola","Terra",3135209
+"MG_Januária","2022","MG","Januária",2,"Quilombola","Terra",3135209
+"MG_Januária","2022","MG","Januária",1,"Quilombola","Terra",3135209
+"MG_Joaíma","2021","MG","Joaíma",1,"Sem Terra","Terra",3136009
+"MG_Joaíma","2021","MG","Joaíma",4,"Sem Terra","Terra",3136009
+"MG_Pompéu","2022","MG","Pompéu",1,"Assentado","Terra",3152006
+"MG_São Joaquim de Bicas","2021","MG","São Joaquim de Bicas",20,"Indígenas","Terra",3162922
+"MG_Varzelândia","2022","MG","Varzelândia",1,"Ambientalista","Terra",3170909
+"MG_Varzelândia","2022","MG","Varzelândia",1,"Ambientalista","Terra",3170909
+"MG_Varzelândia","2022","MG","Varzelândia",1,"Ambientalista","Terra",3170909
+"MG_Varzelândia","2022","MG","Varzelândia",1,"Ambientalista","Terra",3170909
+"MG_Visconde do Rio Branco","2021","MG","Visconde do Rio Branco",1,"Sem Terra","Terra",3172004
+"MS_Amambai","2021","MS","Amambai",3,"Indígenas","Terra",5000609
+"MS_Amambai","2021","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",2,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Amambai","2022","MS","Amambai",1,"Indígenas","Terra",5000609
+"MS_Coronel Sapucaia","2022","MS","Coronel Sapucaia",2,"Indígenas","Terra",5003157
+"MS_Coronel Sapucaia","2022","MS","Coronel Sapucaia",1,"Indígenas","Terra",5003157
+"MS_Douradina","2022","MS","Douradina",1,"Indígenas","Terra",5003504
+"MS_Dourados","2022","MS","Dourados",1,"Indígenas","Terra",5003702
+"MS_Dourados","2022","MS","Dourados",1,"Indígenas","Terra",5003702
+"MS_Dourados","2022","MS","Dourados",1,"Indígenas","Terra",5003702
+"MS_Japorã","2022","MS","Japorã",1,"Indígenas","Terra",5004809
+"MS_Japorã","2022","MS","Japorã",1,"Indígenas","Terra",5004809
+"MS_Laguna Carapã","2022","MS","Laguna Carapã",1,"Indígenas","Terra",5005251
+"MS_Naviraí","2022","MS","Naviraí",3,"Indígenas","Terra",5005707
+"MS_Rio Brilhante","2022","MS","Rio Brilhante",3,"Indígenas","Terra",5007208
+"MT_Barão de Melgaço","2022","MT","Barão de Melgaço",2,"Indígenas","Terra",5101605
+"MT_Barra do Garças","2021","MT","Barra do Garças",1,"Indígenas","Terra",5101803
+"MT_Canabrava do Norte","2022","MT","Canabrava do Norte",2,"Trabalhador Assalariado","Trabalhista",5102694
+"MT_Canabrava do Norte","2022","MT","Canabrava do Norte",1,"Trabalhador Assalariado","Trabalhista",5102694
+"MT_Cláudia","2022","MT","Cláudia",1,"Sem Terra","Terra",5103056
+"MT_Colniza","2022","MT","Colniza",2,"Funcionário Público","Terra",5103254
+"MT_Cotriguaçu","2022","MT","Cotriguaçu",1,"Sem Terra","Terra",5103379
+"MT_Jaciara","2022","MT","Jaciara",3,"Trabalhador Assalariado","Trabalhista",5104807
+"MT_Luciara","2022","MT","Luciara",1,"Indígenas","Terra",5105309
+"MT_Matupá","2022","MT","Matupá",1,"Garimpeiro","Áreas de Garimpo",5105606
+"MT_Mirassol D'Oeste","2022","MT","Mirassol D'Oeste",2,"Assentado","Água",5105622
+"MT_Nova Ubiratã","2021","MT","Nova Ubiratã",1,"Indígenas","Terra",5106240
+"MT_Novo Mundo","2021","MT","Novo Mundo",2,"Sem Terra","Terra",5106265
+"MT_Peixoto de Azevedo","2021","MT","Peixoto de Azevedo",4,"Sem Terra","Terra",5106422
+"MT_Poconé","2021","MT","Poconé",15,"Quilombola","Água",5106505
+"MT_Porto dos Gaúchos","2021","MT","Porto dos Gaúchos",2,"Trabalhador Rural","Terra",5106802
+"MT_Porto dos Gaúchos","2021","MT","Porto dos Gaúchos",1,"Posseiro","Terra",5106802
+"MT_Porto dos Gaúchos","2021","MT","Porto dos Gaúchos",1,"Posseiro","Terra",5106802
+"MT_São Félix do Araguaia","2022","MT","São Félix do Araguaia",1,"Indígenas","Terra",5107859
+"MT_Tapurah","2021","MT","Tapurah",1,"Posseiro","Terra",5108006
+"MT_Tapurah","2021","MT","Tapurah",1,"Posseiro","Terra",5108006
+"MT_Tapurah","2021","MT","Tapurah",1,"Posseiro","Terra",5108006
+"PA_Acará","2022","PA","Acará",1,"Quilombola","Terra",1500206
+"PA_Acará","2022","PA","Acará",1,"Quilombola","Terra",1500206
+"PA_Afuá","2022","PA","Afuá",1,"Assentado","Terra",1500305
+"PA_Afuá","2022","PA","Afuá",2,"Assentado","Terra",1500305
+"PA_Almeirim","2022","PA","Almeirim",1,"Posseiro","Terra",1500503
+"PA_Almeirim","2022","PA","Almeirim",1,"Posseiro","Terra",1500503
+"PA_Almeirim","2022","PA","Almeirim",1,"Posseiro","Terra",1500503
+"PA_Altamira","2022","PA","Altamira",1,"Indígenas","Terra",1500602
+"PA_Anapu","2021","PA","Anapu",1,"Sem Terra","Terra",1500859
+"PA_Anapu","2021","PA","Anapu",1,"Sem Terra","Terra",1500859
+"PA_Aveiro","2022","PA","Aveiro",1,"Posseiro","Terra",1501006
+"PA_Aveiro","2022","PA","Aveiro",1,"Posseiro","Terra",1501006
+"PA_Breu Branco","2022","PA","Breu Branco",1,"Sem Terra","Terra",1501782
+"PA_Goianésia do Pará","2021","PA","Goianésia do Pará",1,"Sem Terra","Terra",1503093
+"PA_Goianésia do Pará","2021","PA","Goianésia do Pará",3,"Sem Terra","Terra",1503093
+"PA_Goianésia do Pará","2021","PA","Goianésia do Pará",1,"Sem Terra","Terra",1503093
+"PA_Goianésia do Pará","2021","PA","Goianésia do Pará",1,"Sem Terra","Terra",1503093
+"PA_Goianésia do Pará","2021","PA","Goianésia do Pará",1,"Sem Terra","Terra",1503093
+"PA_Goianésia do Pará","2021","PA","Goianésia do Pará",2,"Sem Terra","Terra",1503093
+"PA_Goianésia do Pará","2021","PA","Goianésia do Pará",1,"Sem Terra","Terra",1503093
+"PA_Goianésia do Pará","2021","PA","Goianésia do Pará",1,"Sem Terra","Terra",1503093
+"PA_Goianésia do Pará","2021","PA","Goianésia do Pará",4,"Sem Terra","Terra",1503093
+"PA_Itaituba","2021","PA","Itaituba",1,"Assentado","Terra",1503606
+"PA_Itaituba","2021","PA","Itaituba",1,"Agente pastoral","Terra",1503606
+"PA_Jacareacanga","2021","PA","Jacareacanga",1,"Indígenas","Terra",1503754
+"PA_Jacareacanga","2022","PA","Jacareacanga",1,"Indígenas","Terra",1503754
+"PA_Jacareacanga","2021","PA","Jacareacanga",1,"Indígenas","Terra",1503754
+"PA_Jacareacanga","2021","PA","Jacareacanga",1,"Indígenas","Terra",1503754
+"PA_Jacareacanga","2021","PA","Jacareacanga",1,"Indígenas","Terra",1503754
+"PA_Marabá","2022","PA","Marabá",1,"Ribeirinho","Terra",1504208
+"PA_Marabá","2022","PA","Marabá",1,"Ribeirinho","Terra",1504208
+"PA_Marabá","2022","PA","Marabá",1,"Ribeirinho","Terra",1504208
+"PA_Marabá","2022","PA","Marabá",1,"Assentado","Terra",1504208
+"PA_Nova Ipixuna","2021","PA","Nova Ipixuna",50,"Sem Terra","Terra",1504976
+"PA_Nova Ipixuna","2021","PA","Nova Ipixuna",1,"Sem Terra","Terra",1504976
+"PA_Nova Ipixuna","2021","PA","Nova Ipixuna",27,"Sem Terra","Terra",1504976
+"PA_Novo Progresso","2022","PA","Novo Progresso",1,"Assentado","Terra",1505031
+"PA_Novo Progresso","2022","PA","Novo Progresso",1,"Assentado","Terra",1505031
+"PA_Novo Progresso","2022","PA","Novo Progresso",1,"Assentado","Terra",1505031
+"PA_Novo Progresso","2021","PA","Novo Progresso",1,"Assentado","Terra",1505031
+"PA_Novo Progresso","2022","PA","Novo Progresso",1,"Assentado","Terra",1505031
+"PA_Novo Repartimento","2022","PA","Novo Repartimento",1,"Indígenas","Terra",1505064
+"PA_Ourilândia do Norte","2021","PA","Ourilândia do Norte",1,"Sindicalista","Terra",1505437
+"PA_Ourilândia do Norte","2021","PA","Ourilândia do Norte",1,"Sindicalista","Terra",1505437
+"PA_Pacajá","2022","PA","Pacajá",1,"Sem Terra","Terra",1505486
+"PA_Pacajá","2022","PA","Pacajá",1,"Trabalhador Rural","Trabalhista",1505486
+"PA_Pacajá","2022","PA","Pacajá",1,"Sem Terra","Terra",1505486
+"PA_Paragominas","2021","PA","Paragominas",1,"Indígenas","Terra",1505502
+"PA_Pau D'Arco","2021","PA","Pau D'Arco",1,"Sem Terra","Terra",1505551
+"PA_Pau D'Arco","2021","PA","Pau D'Arco",1,"Sem Terra","Terra",1505551
+"PA_Pau D'Arco","2021","PA","Pau D'Arco",1,"Advogado/a","Terra",1505551
+"PA_Pau D'Arco","2021","PA","Pau D'Arco",1,"Sem Terra","Terra",1505551
+"PA_Pau D'Arco","2021","PA","Pau D'Arco",1,"Sem Terra","Terra",1505551
+"PA_Portel","2022","PA","Portel",1,"Sem Terra","Terra",1505809
+"PA_Portel","2022","PA","Portel",1,"Sem Terra","Terra",1505809
+"PA_Rondon do Pará","2022","PA","Rondon do Pará",1,"Trabalhador Rural","Trabalhista",1506187
+"PA_Rurópolis","2021","PA","Rurópolis",1,"Assentado","Terra",1506195
+"PA_Santarém","2022","PA","Santarém",2,"Assentado","Terra",1506807
+"PA_São Félix do Xingu","2022","PA","São Félix do Xingu",1,"Ambientalista","Terra",1507300
+"PA_São Félix do Xingu","2022","PA","São Félix do Xingu",1,"Ambientalista","Terra",1507300
+"PA_São Félix do Xingu","2022","PA","São Félix do Xingu",1,"Ambientalista","Terra",1507300
+"PA_São Félix do Xingu","2022","PA","São Félix do Xingu",2,"Trabalhador Assalariado","Trabalhista",1507300
+"PA_São Félix do Xingu","2022","PA","São Félix do Xingu",1,"Trabalhador Rural","Trabalhista",1507300
+"PA_Tomé-Açu","2022","PA","Tomé-Açu",1,"Quilombola","Água",1508001
+"PA_Tomé-Açu","2022","PA","Tomé-Açu",1,"Indígenas","Terra",1508001
+"PA_Tomé-Açu","2022","PA","Tomé-Açu",1,"Indígenas","Terra",1508001
+"PA_Tucuruí","2021","PA","Tucuruí",1,"Sem Terra","Terra",1508100
+"PE_Amaraji","2021","PE","Amaraji",6,"Sem Terra","Terra",2600906
+"PE_Amaraji","2021","PE","Amaraji",1,"Sem Terra","Terra",2600906
+"PE_Barreiros","2022","PE","Barreiros",1,"Posseiro","Terra",2601409
+"PE_Barreiros","2022","PE","Barreiros",1,"Posseiro","Terra",2601409
+"PE_Cabo de Santo Agostinho","2021","PE","Cabo de Santo Agostinho",1,"Posseiro","Água",2602902
+"PE_Escada","2022","PE","Escada",1,"Trabalhador Rural","Trabalhista",2605202
+"PE_Escada","2022","PE","Escada",1,"Trabalhador Rural","Trabalhista",2605202
+"PE_Escada","2022","PE","Escada",15,"Trabalhador Rural","Trabalhista",2605202
+"PE_Escada","2022","PE","Escada",1,"Trabalhador Rural","Trabalhista",2605202
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",10,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Jaqueira","2021","PE","Jaqueira",1,"Posseiro","Terra",2607950
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2022","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2022","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Maraial","2021","PE","Maraial",1,"Posseiro","Terra",2609204
+"PE_Moreno","2022","PE","Moreno",1,"Sem Terra","Terra",2609402
+"PE_São Joaquim do Monte","2022","PE","São Joaquim do Monte",2,"Sem Terra","Terra",2613305
+"PR_Bom Jesus do Sul","2022","PR","Bom Jesus do Sul",1,"Pequeno proprietário","Terra",4103156
+"PR_Bom Jesus do Sul","2022","PR","Bom Jesus do Sul",1,"Pequeno proprietário","Terra",4103156
+"PR_Bom Jesus do Sul","2022","PR","Bom Jesus do Sul",1,"Pequeno proprietário","Terra",4103156
+"PR_Guaíra","2022","PR","Guaíra",4,"Indígenas","Água",4108809
+"PR_Guaíra","2022","PR","Guaíra",8,"Indígenas","Água",4108809
+"RJ_Mangaratiba","2022","RJ","Mangaratiba",1,"Indígenas","Terra",3302601
+"RJ_Niterói","2021","RJ","Niterói",1,"Pescador","Água",3303302
+"RO_Alta Floresta D'Oeste","2022","RO","Alta Floresta D'Oeste",1,"Funcionário Público","Terra",1100015
+"RO_Alta Floresta D'Oeste","2022","RO","Alta Floresta D'Oeste",1,"Indígenas","Terra",1100015
+"RO_Buritis","2022","RO","Buritis",1,"Advogado/a","Terra",1100452
+"RO_Cacoal","2021","RO","Cacoal",1,"Indígenas","Terra",1100049
+"RO_Chupinguaia","2021","RO","Chupinguaia",2,"Sem Terra","Terra",1100924
+"RO_Chupinguaia","2021","RO","Chupinguaia",1,"Sem Terra","Terra",1100924
+"RO_Chupinguaia","2021","RO","Chupinguaia",1,"Sem Terra","Terra",1100924
+"RO_Chupinguaia","2021","RO","Chupinguaia",1,"Sem Terra","Terra",1100924
+"RO_Chupinguaia","2021","RO","Chupinguaia",1,"Sem Terra","Terra",1100924
+"RO_Chupinguaia","2021","RO","Chupinguaia",2,"Sem Terra","Terra",1100924
+"RO_Chupinguaia","2021","RO","Chupinguaia",1,"Professor","Terra",1100924
+"RO_Chupinguaia","2021","RO","Chupinguaia",1,"Sem Terra","Terra",1100924
+"RO_Governador Jorge Teixeira","2021","RO","Governador Jorge Teixeira",1,"Assentado","Terra",1101005
+"RO_Governador Jorge Teixeira","2022","RO","Governador Jorge Teixeira",1,"Assentado","Terra",1101005
+"RO_Governador Jorge Teixeira","2022","RO","Governador Jorge Teixeira",1,"Assentado","Terra",1101005
+"RO_Guajará-Mirim","2022","RO","Guajará-Mirim",10,"Funcionário Público","Terra",1100106
+"RO_Machadinho D'Oeste","2022","RO","Machadinho D'Oeste",54,"Sem Terra","Terra",1100130
+"RO_Machadinho D'Oeste","2022","RO","Machadinho D'Oeste",1,"Extrativista","Terra",1100130
+"RO_Machadinho D'Oeste","2022","RO","Machadinho D'Oeste",1,"Atingido por barragem","Terra",1100130
+"RO_Nova Brasilândia D'Oeste","2022","RO","Nova Brasilândia D'Oeste",4,"Sem Terra","Terra",1100148
+"RO_Nova Brasilândia D'Oeste","2022","RO","Nova Brasilândia D'Oeste",3,"Sem Terra","Terra",1100148
+"RO_Porto Velho","2021","RO","Porto Velho",1,"Sem Terra","Terra",1100205
+"RO_Porto Velho","2022","RO","Porto Velho",1,"Sem Terra","Terra",1100205
+"RO_Porto Velho","2022","RO","Porto Velho",1,"Sem Terra","Terra",1100205
+"RO_Porto Velho","2021","RO","Porto Velho",1,"Sem Terra","Terra",1100205
+"RO_Porto Velho","2022","RO","Porto Velho",1,"Sem Terra","Terra",1100205
+"RO_Porto Velho","2021","RO","Porto Velho",1,"Sem Terra","Terra",1100205
+"RO_Porto Velho","2021","RO","Porto Velho",1,"Aliado/a","Terra",1100205
+"RO_Rio Crespo","2022","RO","Rio Crespo",10,"Sem Terra","Terra",1100262
+"RO_Rio Crespo","2022","RO","Rio Crespo",1,"Sem Terra","Terra",1100262
+"RO_Rio Crespo","2022","RO","Rio Crespo",7,"Sem Terra","Terra",1100262
+"RO_São Francisco do Guaporé","2022","RO","São Francisco do Guaporé",1,"Indígenas","Terra",1101492
+"RO_São Francisco do Guaporé","2022","RO","São Francisco do Guaporé",1,"Indígenas","Terra",1101492
+"RO_Seringueiras","2022","RO","Seringueiras",1,"Indígenas","Terra",1101500
+"RO_Seringueiras","2022","RO","Seringueiras",1,"Sem Terra","Terra",1101500
+"RO_Seringueiras","2022","RO","Seringueiras",1,"Advogado/a","Terra",1101500
+"RR_Mucajaí","2022","RR","Mucajaí",2,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",5,"Indígenas","Terra",1400308
+"RR_Mucajaí","2021","RR","Mucajaí",8,"Indígenas","Terra",1400308
+"RR_Mucajaí","2021","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2021","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",2,"Funcionário Público","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",2,"Funcionário Público","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2021","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2021","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",2,"Indígenas","Terra",1400308
+"RR_Mucajaí","2021","RR","Mucajaí",3,"Funcionário Público","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2021","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",2,"Funcionário Público","Terra",1400308
+"RR_Mucajaí","2021","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",2,"Funcionário Público","Terra",1400308
+"RR_Mucajaí","2022","RR","Mucajaí",1,"Indígenas","Terra",1400308
+"RR_Uiramutã","2021","RR","Uiramutã",1,"Indígenas","Terra",1400704
+"RR_Uiramutã","2022","RR","Uiramutã",2,"Indígenas","Terra",1400704
+"RS_Faxinalzinho","2022","RS","Faxinalzinho",1,"Indígenas","Terra",4308052
+"RS_Faxinalzinho","2022","RS","Faxinalzinho",1,"Indígenas","Terra",4308052
+"SC_São Cristovão do Sul","2021","SC","São Cristovão do Sul",1,"Advogado/a","Terra",4216057
+"SC_São Cristovão do Sul","2021","SC","São Cristovão do Sul",10,"Sem Terra","Terra",4216057
+"SC_Urussanga","2022","SC","Urussanga",1,"Pequeno proprietário","Terra",4219002
+"SC_Urussanga","2022","SC","Urussanga",1,"Pequeno proprietário","Terra",4219002
+"SC_Urussanga","2022","SC","Urussanga",1,"Pequeno proprietário","Terra",4219002
+"SC_Urussanga","2022","SC","Urussanga",1,"Pequeno proprietário","Terra",4219002
+"SC_Urussanga","2022","SC","Urussanga",1,"Pequeno proprietário","Terra",4219002
+"SC_Urussanga","2022","SC","Urussanga",1,"Pequeno proprietário","Terra",4219002
+"SP_Agudos","2022","SP","Agudos",1,"Assentado","Terra",3500709
+"TO_Barra do Ouro","2021","TO","Barra do Ouro",1,"Posseiro","Terra",1703073
+"TO_Barra do Ouro","2021","TO","Barra do Ouro",1,"Posseiro","Terra",1703073
+"TO_Barra do Ouro","2021","TO","Barra do Ouro",1,"Posseiro","Terra",1703073
+"TO_Barra do Ouro","2021","TO","Barra do Ouro",1,"Trabalhador Assalariado","Terra",1703073
+"TO_Filadélfia","2021","TO","Filadélfia",1,"Quilombola","Terra",1707702
+"TO_Filadélfia","2022","TO","Filadélfia",1,"Quilombola","Terra",1707702
+"TO_Filadélfia","2022","TO","Filadélfia",1,"Quilombola","Terra",1707702
+"TO_Lagoa da Confusão","2022","TO","Lagoa da Confusão",2,"Indígenas","Água",1711902
+"TO_Palmeirante","2021","TO","Palmeirante",1,"Sem Terra","Terra",1715705
+"TO_Palmeirante","2021","TO","Palmeirante",1,"Pequeno proprietário","Terra",1715705
+"TO_Paranã","2022","TO","Paranã",1,"Trabalhador Rural","Trabalhista",1716208
