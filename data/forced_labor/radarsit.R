@@ -13,8 +13,6 @@ for(i in 1:nrow(mun_br)){
   print(paste0(i," ok"))
 }
 
-qtds_2021<-qtds
-
 qtds_2022 <- list()
 for(i in 1:nrow(mun_br)){
   Sys.sleep(0.5)
