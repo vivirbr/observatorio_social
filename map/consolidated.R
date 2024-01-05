@@ -23,7 +23,7 @@ quantiles <- map_consolidated %>% filter(consolidated!=0) %>%
   pull(consolidated) %>%
   quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
   as.vector() 
-quantiles[length(quantiles)]<-max(map_embargo$consolidated,na.rm=TRUE)
+quantiles[length(quantiles)]<-max(map_consolidated$consolidated,na.rm=TRUE)
 
 # here we create custom labels
 labels <- imap_chr(quantiles, function(., idx){

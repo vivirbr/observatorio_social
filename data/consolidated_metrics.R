@@ -32,9 +32,14 @@ forcedlabor <- read.csv("diversasocioambiental/data/forced_labor/full_radarsit.c
                                 values_to='trabalhoescravo') %>%
                   mutate(year=gsub("qtds_|_rbind","",year))
 
+#Embargoes
+embargoes <- read.csv("diversasocioambiental/data/embargoes/embargo_w_geocode.csv") %>%
+                     add_column(year=2022) %>%
+                     rename(embargoes="freq")
+
 
 # Merging all data sources
-full<- Reduce(function(...) merge(..., by=c("CD_MUN","year"),all=T),list(alerts,agua_freq,terra,forcedlabor))
+full<- Reduce(function(...) merge(..., by=c("CD_MUN","year"),all=T),list(alerts,agua_freq,terra,forcedlabor,embargoes))
 full[is.na(full)] <- 0
 
 # Normalizing the data
@@ -42,7 +47,7 @@ process <- preProcess(full, method=c("range"))
 norm_scale <- predict(process, full)
 norm_scale$CD_MUN<-full$CD_MUN #bringing back the correct CD_MUN
 
-norm_scale$consolidated <- rowSums(norm_scale[,3:6]/4)
+norm_scale$consolidated <- rowSums(norm_scale[,3:7]/5)
 
 write.csv(norm_scale,"diversasocioambiental/data/consolidated_metrics.csv",row.names=FALSE)
 

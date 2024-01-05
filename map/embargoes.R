@@ -1,5 +1,6 @@
 library(tidyverse)
 library(magrittr)
+library(fedmatch)
 library(viridis)
 library(dplyr)  
 library(geobr)
@@ -11,48 +12,67 @@ options(scipen=999)
 map <- read_municipality(year=2018)
 
 #Forced labor
-embargoes <- read.csv("diversasocioambiental/data/embargoes/areas_embargadas.csv") %>%
+embargoes <- read.csv("diversasocioambiental/data/embargoes/rel_areas_embargadas_0-82104_2024-01-04_073207.csv") %>%
                 mutate(ano=str_sub(DAT_EMBARGO,7,10))
 
-filtered <- embargoes[grep("desmatamento",embargoes$DES_INFRACAO),]
-
-filtered <- filtered %>% 
-             mutate(QTD_AREA_EMBARGADA = gsub("(.*),.*", "\\1", filtered$QTD_AREA_EMBARGADA),
-                    QTD_AREA_DESMATADA = gsub("(.*),.*", "\\1", filtered$QTD_AREA_DESMATADA)
+filtered <- embargoes %>% 
+             mutate(QTD_AREA_EMBARGADA = gsub("(.*),.*", "\\1", embargoes$QTD_AREA_EMBARGADA),
+                    QTD_AREA_DESMATADA = gsub("(.*),.*", "\\1", embargoes$QTD_AREA_DESMATADA)
              )
 
+embargo_2022 <- filtered %>% 
+              filter(ano==2022) %>%
+              select(MUNICIPIO,QTD_AREA_DESMATADA,QTD_AREA_EMBARGADA)
 
-## THERE IS NO DATA HERE
-# embargo_2021 <- filtered %>% 
-#               filter(ano==2021) %>%
-#               select(COD_MUNICIPIO,QTD_AREA_DESMATADA,QTD_AREA_EMBARGADA) %>%
-#               group_by(COD_MUNICIPIO) %>%
-#               summarize(area_desmatada = sum(as.numeric(QTD_AREA_DESMATADA)),
-#                         area_embargada = sum(as.numeric(QTD_AREA_EMBARGADA)))
-# embargo_2022 <- filtered %>% 
-#               filter(ano==2022) %>%
-#               select(COD_MUNICIPIO,QTD_AREA_DESMATADA,QTD_AREA_EMBARGADA) %>%
-#               group_by(COD_MUNICIPIO) %>%
-#               summarize(area_desmatada = sum(as.numeric(QTD_AREA_DESMATADA)),
-#                         area_embargada = sum(as.numeric(QTD_AREA_EMBARGADA)))
 
-embargo_all <- filtered %>% 
-                select(COD_MUNICIPIO,QTD_AREA_DESMATADA,QTD_AREA_EMBARGADA) %>%
-                group_by(COD_MUNICIPIO) %>%
-                summarize(area_desmatada = sum(as.numeric(QTD_AREA_DESMATADA),na.rm=TRUE),
-                            area_embargada = sum(as.numeric(QTD_AREA_EMBARGADA),na.rm=TRUE))
+# Adding the IBGE geocodes to the dataset
+mun_br <- read.csv("diversasocioambiental/data/deforestation/mapbiomas_deforestation_mun.csv") %>% 
+                   mutate(id2 = as.character(seq(1:nrow(.)))) %>% 
+                   select(id2,NM_MUN,SIGLA_UF,CD_MUN) %>%
+                   mutate(UF_MUN = paste(SIGLA_UF,NM_MUN,sep="_"))
 
-map_embargo<- merge(map,embargo_all,by.x="code_muni",by.y="COD_MUNICIPIO",all.x=TRUE)
+embargo_2022_unique_mun <-  data.frame(MUNICIPIO = unique(embargo_2022$MUNICIPIO),
+                                        id1 = seq(1:length(unique(embargo_2022$MUNICIPIO))))
+
+embargo_2022_join <- merge_plus(embargo_2022_unique_mun, mun_br, 
+                                by.x='MUNICIPIO',
+                                by.y='NM_MUN',
+                                unique_key_1 = "id1",
+                                unique_key_2 = "id2")
+
+embargo_2022_join_full <- plyr::rbind.fill(embargo_2022_join$matches,embargo_2022_join$data1_nomatch)
+
+# Fixing no matches manually 
+embargo_2022_join_full$CD_MUN<-ifelse(embargo_2022_join_full$id1==30,1100346,embargo_2022_join_full$CD_MUN)
+embargo_2022_join_full$CD_MUN<-ifelse(embargo_2022_join_full$id1==62,2400208,embargo_2022_join_full$CD_MUN)
+embargo_2022_join_full$CD_MUN<-ifelse(embargo_2022_join_full$id1==206,3122900,embargo_2022_join_full$CD_MUN)
+embargo_2022_join_full$CD_MUN<-ifelse(embargo_2022_join_full$id1==389,2922250,embargo_2022_join_full$CD_MUN)
+embargo_2022_join_full$CD_MUN<-ifelse(embargo_2022_join_full$id1==509,5107008,embargo_2022_join_full$CD_MUN)
+embargo_2022_join_full$CD_MUN<-ifelse(embargo_2022_join_full$id1==580,5107800,embargo_2022_join_full$CD_MUN)
+
+
+# Assembling all parts
+embargo_final <- merge(embargo_2022,embargo_2022_join_full %>% select(MUNICIPIO,CD_MUN),by="MUNICIPIO",all.x=TRUE)
+
+
+
+embargo_final <- data.frame(table(embargo_final$CD_MUN))
+colnames(embargo_final)<-c("CD_MUN","freq")
+#write.csv(embargo_final,"diversasocioambiental/data/embargoes/embargo_w_geocode.csv",row.names=FALSE)
+
+
+map_embargo<- merge(map,embargo_final,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
+
 
 #------ Parameters -----#
 
 # extract quantiles
-quantiles <- map_embargo %>% filter(area_desmatada!=0) %>%
-  pull(area_desmatada) %>%
-  quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
+quantiles <- map_embargo %>% filter(freq!=0) %>%
+  pull(freq) %>%
+  quantile(probs = c(0, 0.7, 0.9, 0.95, 1)) %>%
   signif(2) %>%
   as.vector() 
-quantiles[length(quantiles)]<-max(map_embargo$area_desmatada,na.rm=TRUE)
+quantiles[length(quantiles)]<-max(map_embargo$freq,na.rm=TRUE)
 
 
 # here we create custom labels
@@ -64,7 +84,7 @@ labels <- imap_chr(quantiles, function(., idx){
 labels <- labels[1:length(labels) - 1]
 
 map_embargo %<>%
-  mutate(mean_quantiles = cut(area_desmatada,
+  mutate(mean_quantiles = cut(freq,
                                breaks = quantiles,
                                labels = labels,
                                include.lowest = T))
@@ -144,7 +164,7 @@ ggplot(
   ) +
   scale_fill_viridis(
     option = "rocket",
-    name = "Area deforested\nin hectares",
+    name = "Number\nof embargoes",
     alpha = 0.9, 
     begin = 0.1, 
     end = 0.9,
@@ -159,9 +179,9 @@ ggplot(
   # add titles
   labs(x = NULL,
        y = NULL,
-       title = "Embargoed areas of illegal deforestation",
+       title = "Deforestation embargoes",
        subtitle = "As reported by IBAMA",
-       caption = "Data captures embargoes from 2001 to 2013") +
+       caption = "") +
   # add theme
   theme_map()
 dev.off()
