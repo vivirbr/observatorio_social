@@ -11,33 +11,23 @@ options(scipen=999)
 map <- read_municipality(year=2018)
 
 #Forced labor
-consolidated <- read.csv("diversasocioambiental/data/consolidated_metrics.csv") %>% 
-                select(CD_MUN,year,consolidated) 
+consolidated <- read.csv("diversasocioambiental/data/consolidated_metrics.csv")
 
-map_consolidated<- merge(map,consolidated,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
+consolidated_aggregated <- consolidated %>% filter(year==2022) %>%
+                             mutate(social_risk = rowMeans(select(., freq,terra,trabalhoescravo), na.rm = TRUE),
+                                    env_risk = rowMeans(select(., deforestation,embargoes), na.rm = TRUE)) %>%
+                             select(CD_MUN,social_risk,env_risk,perc_area)
 
-#------ Parameters -----#
+consolidated_aggregated$social_risk_level <- ifelse(consolidated_aggregated$social_risk <0.10,"LOW",
+                                               ifelse(consolidated_aggregated$social_risk >0.25,"HIGH","HIGH"))
+consolidated_aggregated$env_risk_level <- ifelse(consolidated_aggregated$env_risk <0.25,"LOW",
+                                               ifelse(consolidated_aggregated$env_risk >0.50,"HIGH","HIGH"))
 
-# extract quantiles
-quantiles <- map_consolidated %>% filter(consolidated!=0) %>%
-  pull(consolidated) %>%
-  quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
-  as.vector() 
-quantiles[length(quantiles)]<-max(map_consolidated$consolidated,na.rm=TRUE)
+consolidated_aggregated$consolidated_cases <- paste(consolidated_aggregated$social_risk_level,
+                                                    consolidated_aggregated$env_risk_level,sep="-")
 
-# here we create custom labels
-labels <- imap_chr(quantiles, function(., idx){
-  return(paste0(round(quantiles[idx], 10),
-                             " – ",
-                             round(quantiles[idx + 1], 10)))
-})
-labels <- labels[1:length(labels) - 1]
+map_consolidated<- merge(map,consolidated_aggregated,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
-map_consolidated %<>%
-  mutate(mean_quantiles = cut(consolidated,
-                               breaks = quantiles,
-                               labels = labels,
-                               include.lowest = T))
 
 #------- PLOT --------#
 
@@ -92,10 +82,10 @@ theme_map <- function(...) {
 default_font_color<-"#000000"
 default_background_color<-"transparent"
 
-png(filename="diversasocioambiental/map/plots/consolidated_2021.png", 
+png(filename="diversasocioambiental/map/plots/consolidated_levels_2022.png", 
              width = 3000, height = 3000, units = "px", res = 300)
 ggplot(
-  data = map_consolidated %>% filter(year==2021)
+  data = map_consolidated 
     ) +
   geom_sf(
     data = map,
@@ -107,77 +97,36 @@ ggplot(
               guide = F) + 
   geom_sf(
     mapping = aes(
-      fill = mean_quantiles
+      fill = consolidated_cases
       ),
     color = "white",
     size = 0.1
   ) +
-  scale_fill_viridis(
-    option = "rocket",
-    name = "normalized index",
-    alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
-    discrete = T,
-    direction = -1,
-    na.translate = F,
-    guide = guide_legend(
-     keyheight = unit(5, units = "mm"),
-     title.position = "top",
-     reverse = T
-  )) +
-  # add titles
-  labs(x = NULL,
-       y = NULL,
-       title = "Consolidated metric in 2021",
-       subtitle = "Based on alerts of deforestation, forced labor, water and people violence",
-       caption = "") +
-  # add theme
-  theme_map()
-dev.off()
-
-png(filename="diversasocioambiental/map/plots/consolidated_2022.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
-ggplot(
-  data = map_consolidated %>% filter(year==2022)
-    ) +
-  geom_sf(
-    data = map,
-    fill = "#d1d1d1",
-    color = "white"
-  ) +
-  scale_alpha(name = "",
-              range = c(0.6, 0),
-              guide = F) + 
-  geom_sf(
-    mapping = aes(
-      fill = mean_quantiles
-      ),
-    color = "white",
-    size = 0.1
-  ) +
-  scale_fill_viridis(
-    option = "rocket",
-    name = "normalized index",
-    alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
-    discrete = T,
-    direction = -1,
-    na.translate = F,
-    guide = guide_legend(
-     keyheight = unit(5, units = "mm"),
-     title.position = "top",
-     reverse = T
-  )) +
+  scale_fill_manual(values = c("black", "deeppink4", "darkred","gray"),name = "categorical risk")+
+#  scale_fill_viridis(
+#     option = "H",
+#     name = "normalized index",
+#     alpha = 0.9, 
+#     begin = 0.1, 
+#     end = 0.9,
+#     discrete = T,
+#     direction = -1,
+#     na.translate = F,
+#     guide = guide_legend(
+#      keyheight = unit(5, units = "mm"),
+#      title.position = "top",
+#      reverse = F
+#   )) +
   # add titles
   labs(x = NULL,
        y = NULL,
        title = "Consolidated metric in 2022",
-       subtitle = "Based on deforestation, conflicts, embargoes, forced labor and special areas",
-       caption = "") +
+       subtitle = "Based on social and environmental risks",
+       caption = "Social risk is based on land and water conflicts and forced labor, while environmental risk is based on deforestation and embargoes of ilegal deforestation") +
   # add theme
   theme_map()
 dev.off()
+
+
 
 

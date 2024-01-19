@@ -10,34 +10,34 @@ options(scipen=999)
 #BR map - municipalities
 map <- read_municipality(year=2018)
 
-#Forced labor
-consolidated <- read.csv("diversasocioambiental/data/consolidated_metrics.csv") %>% 
-                select(CD_MUN,year,consolidated) 
+#Deforestation
+areas <- read.csv("diversasocioambiental/data/special_areas/areas_especiais.csv") %>% 
+              select(-system.index,-.geo) %>%
+              mutate(perc_area = ((sum/100)/AREA_KM2)*100)
 
-map_consolidated<- merge(map,consolidated,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
+map_areas<- merge(map,areas,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
 #------ Parameters -----#
+#  quantile(probs = c(0,seq(0.8, 1, length.out = no_classes + 1))) %>%
 
 # extract quantiles
-quantiles <- map_consolidated %>% filter(consolidated!=0) %>%
-  pull(consolidated) %>%
-  quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
-  as.vector() 
-quantiles[length(quantiles)]<-max(map_consolidated$consolidated,na.rm=TRUE)
+quantiles_areas <- c(0,5,25,50,75,90,100) 
 
 # here we create custom labels
-labels <- imap_chr(quantiles, function(., idx){
-  return(paste0(round(quantiles[idx], 10),
+labels_areas <- imap_chr(quantiles_areas, function(., idx){
+  return(paste0(round(quantiles_areas[idx], 0),
                              " – ",
-                             round(quantiles[idx + 1], 10)))
+                             round(quantiles_areas[idx + 1], 0)))
 })
-labels <- labels[1:length(labels) - 1]
+labels_areas <- labels_areas[1:length(labels_areas) - 1]
 
-map_consolidated %<>%
-  mutate(mean_quantiles = cut(consolidated,
-                               breaks = quantiles,
-                               labels = labels,
+
+map_areas %<>%
+  mutate(quantiles_areas = cut(perc_area,
+                               breaks = quantiles_areas,
+                               labels = labels_areas,
                                include.lowest = T))
+
 
 #------- PLOT --------#
 
@@ -92,10 +92,10 @@ theme_map <- function(...) {
 default_font_color<-"#000000"
 default_background_color<-"transparent"
 
-png(filename="diversasocioambiental/map/plots/consolidated_2021.png", 
+png(filename="diversasocioambiental/map/plots/special_areas.png", 
              width = 3000, height = 3000, units = "px", res = 300)
 ggplot(
-  data = map_consolidated %>% filter(year==2021)
+  data = map_areas
     ) +
   geom_sf(
     data = map,
@@ -107,14 +107,14 @@ ggplot(
               guide = F) + 
   geom_sf(
     mapping = aes(
-      fill = mean_quantiles
+      fill = quantiles_areas
       ),
     color = "white",
     size = 0.1
   ) +
   scale_fill_viridis(
     option = "rocket",
-    name = "normalized index",
+    name = "Percentage of\nspecial areas",
     alpha = 0.9, 
     begin = 0.1, 
     end = 0.9,
@@ -129,55 +129,10 @@ ggplot(
   # add titles
   labs(x = NULL,
        y = NULL,
-       title = "Consolidated metric in 2021",
-       subtitle = "Based on alerts of deforestation, forced labor, water and people violence",
-       caption = "") +
+       title = "Existence of special areas in the municipality",
+       subtitle = "Conservation units, indigenous lands, settlements and Quilombola lands",
+       caption = "Conservation units does not include the class Área de Protecão Ambiental (APA)") +
   # add theme
   theme_map()
 dev.off()
-
-png(filename="diversasocioambiental/map/plots/consolidated_2022.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
-ggplot(
-  data = map_consolidated %>% filter(year==2022)
-    ) +
-  geom_sf(
-    data = map,
-    fill = "#d1d1d1",
-    color = "white"
-  ) +
-  scale_alpha(name = "",
-              range = c(0.6, 0),
-              guide = F) + 
-  geom_sf(
-    mapping = aes(
-      fill = mean_quantiles
-      ),
-    color = "white",
-    size = 0.1
-  ) +
-  scale_fill_viridis(
-    option = "rocket",
-    name = "normalized index",
-    alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
-    discrete = T,
-    direction = -1,
-    na.translate = F,
-    guide = guide_legend(
-     keyheight = unit(5, units = "mm"),
-     title.position = "top",
-     reverse = T
-  )) +
-  # add titles
-  labs(x = NULL,
-       y = NULL,
-       title = "Consolidated metric in 2022",
-       subtitle = "Based on deforestation, conflicts, embargoes, forced labor and special areas",
-       caption = "") +
-  # add theme
-  theme_map()
-dev.off()
-
 

@@ -37,9 +37,16 @@ embargoes <- read.csv("diversasocioambiental/data/embargoes/embargo_w_geocode.cs
                      add_column(year=2022) %>%
                      rename(embargoes="freq")
 
+#Special areas
+areas <- read.csv("diversasocioambiental/data/special_areas/areas_especiais.csv") %>%
+                     select(-system.index,-.geo) %>%
+                     mutate(perc_area = ((sum/100)/AREA_KM2)*100) %>%
+                     select(-AREA_KM2,-NM_MUN,-SIGLA_UF,-sum) %>%
+                     add_column(year=2022) 
+
 
 # Merging all data sources
-full<- Reduce(function(...) merge(..., by=c("CD_MUN","year"),all=T),list(alerts,agua_freq,terra,forcedlabor,embargoes))
+full<- Reduce(function(...) merge(..., by=c("CD_MUN","year"),all=T),list(alerts,agua_freq,terra,forcedlabor,embargoes,areas))
 full[is.na(full)] <- 0
 
 # Normalizing the data
