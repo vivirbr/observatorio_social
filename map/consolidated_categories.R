@@ -38,6 +38,17 @@ consolidated_aggregated_2021$env_risk_level <- ifelse(consolidated_aggregated_20
 consolidated_aggregated_2021$consolidated_cases <- paste(consolidated_aggregated_2021$social_risk_level,
                                                     consolidated_aggregated_2021$env_risk_level,sep="-")
 
+consolidated_aggregated_2021 <- consolidated_aggregated_2021 %>%
+                                  mutate(consolidated_cases = case_when(consolidated_cases=="HIGH-HIGH" ~ "High reported socioenvironmental impacts",
+                                                                        consolidated_cases=="HIGH-LOW"|
+                                                                        consolidated_cases=="HIGH-NO"|
+                                                                        consolidated_cases=="LOW-HIGH"|
+                                                                        consolidated_cases=="NO-HIGH" ~ "Medium reported socioenvironmental impacts",
+                                                                        consolidated_cases=="LOW-LOW"|
+                                                                        consolidated_cases=="LOW-NO"|
+                                                                        consolidated_cases=="NO-LOW" ~ "Low reported socioenvironmental impacts",
+                                                                        consolidated_cases=="NO-NO" ~ "No information on socioenvironmental impacts"))
+
 map_consolidated_2021<- merge(map,consolidated_aggregated_2021,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
 # 2022
@@ -54,6 +65,17 @@ consolidated_aggregated_2022$env_risk_level <- ifelse(consolidated_aggregated_20
 
 consolidated_aggregated_2022$consolidated_cases <- paste(consolidated_aggregated_2022$social_risk_level,
                                                     consolidated_aggregated_2022$env_risk_level,sep="-")
+
+consolidated_aggregated_2022 <- consolidated_aggregated_2022 %>%
+                                  mutate(consolidated_cases = case_when(consolidated_cases=="HIGH-HIGH" ~ "High reported socioenvironmental impacts",
+                                                                        consolidated_cases=="HIGH-LOW"|
+                                                                        consolidated_cases=="HIGH-NO"|
+                                                                        consolidated_cases=="LOW-HIGH"|
+                                                                        consolidated_cases=="NO-HIGH" ~ "Medium reported socioenvironmental impacts",
+                                                                        consolidated_cases=="LOW-LOW"|
+                                                                        consolidated_cases=="LOW-NO"|
+                                                                        consolidated_cases=="NO-LOW" ~ "Low reported socioenvironmental impacts",
+                                                                        consolidated_cases=="NO-NO" ~ "No information on socioenvironmental impacts"))
 
 map_consolidated_2022<- merge(map,consolidated_aggregated_2022,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
@@ -131,27 +153,20 @@ ggplot(
     color = "white",
     size = 0.1
   ) +
-  scale_fill_manual(values = c("#540b0e", #HH
-                               "#ec9a9a", #HL
-                               "#ec9a9a", #HN
-                               "#ec9a9a", #LH
-                               "#fff3b0", #LL
-                               "#fff3b0", #LN
-                               "#ec9a9a", #NH
-                               "#fff3b0", #NL
-                               "gray"),name = "categorical risk")+ 
+  scale_fill_manual(values = alpha(c("#540b0e","#e09f3e","#9e2a2b","gray"),.8),name = "categorical classes")+ 
   # add titles
   labs(x = NULL,
        y = NULL,
-       title = "Consolidated metric in 2021",
-       subtitle = "Based on social and environmental risks",
-       caption = "Social risk is based on land and water conflicts and forced labor, while environmental risk is based on deforestation alerts") +
+       title = "Map of socioenvironmental impacts 2021",
+       subtitle = "Based on reported human rights violations* and deforestation rates**",
+       caption = "*Conflicts over land (CPT), conflict over water (CPT), Work similar to slave labor (MTE)\n
+                  **Deforestation rates (Mapbiomas Alerts)") +
   # add theme
   theme_map()+
   geom_sf(
     data = biome,
     fill = "transparent",
-    color = "gray30"
+    color = "gray10"
   ) 
 
 dev.off()
@@ -178,27 +193,20 @@ ggplot(
     color = "white",
     size = 0.1
   ) +
-  scale_fill_manual(values = c("#540b0e", #HH
-                               "#ec9a9a", #HL
-                               "#ec9a9a", #HN
-                               "#ec9a9a", #LH
-                               "#fff3b0", #LL
-                               "#fff3b0", #LN
-                               "#ec9a9a", #NH
-                               "#fff3b0", #NL
-                               "gray"),name = "categorical risk")+ 
+  scale_fill_manual(values = alpha(c("#540b0e","#e09f3e","#9e2a2b","gray"),.8),name = "categorical classes")+ 
   # add titles
   labs(x = NULL,
        y = NULL,
-       title = "Consolidated metric in 2022",
-       subtitle = "Based on social and environmental risks",
-       caption = "Social risk is based on land and water conflicts and forced labor, while environmental risk is based on deforestation and embargoes of ilegal deforestation") +
+       title = "Map of socioenvironmental impacts 2022",
+       subtitle = "Based on reported human rights violations* and deforestation rates**",
+       caption = "*Conflicts over land (CPT), conflict over water (CPT), Work similar to slave labor (MTE)\n
+                  **Embargoes for illegal deforestation (IBAMA) and deforestation rates (Mapbiomas Alerts)") +
   # add theme
   theme_map()+
   geom_sf(
     data = biome,
     fill = "transparent",
-    color = "gray30"
+    color = "gray10"
   ) 
 
 dev.off()
