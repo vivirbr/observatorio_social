@@ -9,6 +9,7 @@ options(scipen=999)
 
 #BR map - municipalities
 map <- read_municipality(year=2018)
+biome <- read_biomes(year=2019) %>% filter(name_biome!="Sistema Costeiro")
 
 #Deforestation
 areas <- read.csv("diversasocioambiental/data/special_areas/areas_especiais.csv") %>% 
@@ -30,7 +31,7 @@ labels_areas <- imap_chr(quantiles_areas, function(., idx){
                              round(quantiles_areas[idx + 1], 0)))
 })
 labels_areas <- labels_areas[1:length(labels_areas) - 1]
-
+fix(labels_areas)
 
 map_areas %<>%
   mutate(quantiles_areas = cut(perc_area,
@@ -93,7 +94,7 @@ default_font_color<-"#000000"
 default_background_color<-"transparent"
 
 png(filename="diversasocioambiental/map/plots/special_areas.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_areas
     ) +
@@ -113,13 +114,13 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "viridis",
     name = "Percentage of\nspecial areas",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.2, 
+    end = 1,
     discrete = T,
-    direction = -1,
+    direction = 1,
     na.translate = F,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
@@ -133,6 +134,11 @@ ggplot(
        subtitle = "Conservation units, indigenous lands, settlements and Quilombola lands",
        caption = "Conservation units does not include the class Área de Protecão Ambiental (APA)") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
