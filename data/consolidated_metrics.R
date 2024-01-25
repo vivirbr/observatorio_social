@@ -54,10 +54,8 @@ process <- preProcess(full, method=c("range"))
 norm_scale <- predict(process, full)
 norm_scale$CD_MUN<-full$CD_MUN #bringing back the correct CD_MUN
 
-
 norm_scale$consolidated <- ifelse(norm_scale$year=="2021",rowSums(norm_scale[,3:7]/4),rowSums(norm_scale[,3:7]/5))
-
-norm_scale$consolidated <- rowSums(norm_scale[,3:7]/5)
+norm_scale$consolidated_sa <- ifelse(norm_scale$year=="2021",rowSums(norm_scale[,3:7]/4),rowSums(norm_scale[,3:7]/5))
 
 write.csv(norm_scale,"diversasocioambiental/data/consolidated_metrics.csv",row.names=FALSE)
 

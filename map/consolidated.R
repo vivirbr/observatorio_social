@@ -13,9 +13,10 @@ biome <- read_biomes(year=2019) %>% filter(name_biome!="Sistema Costeiro")
 
 #Forced labor
 consolidated <- read.csv("diversasocioambiental/data/consolidated_metrics.csv") %>% 
-                select(CD_MUN,year,consolidated) 
+                select(CD_MUN,year,consolidated_sa) 
 
 map_consolidated<- merge(map,consolidated,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
+
 
 #------ Parameters -----#
 
@@ -38,7 +39,7 @@ labels <- labels[1:length(labels) - 1]
 fix(labels)
 
 map_consolidated %<>%
-  mutate(mean_quantiles = cut(consolidated,
+  mutate(mean_quantiles = cut(consolidated_sa,
                                breaks = quantiles,
                                labels = labels,
                                include.lowest = T))
@@ -134,7 +135,7 @@ ggplot(
   labs(x = NULL,
        y = NULL,
        title = "Consolidated metric in 2021",
-       subtitle = "Based on alerts of deforestation, forced labor, water and people violence",
+       subtitle = "Based on alerts of deforestation, forced labor, water and land violence and existence of special areas",
        caption = "") +
   # add theme
   theme_map()+
@@ -184,7 +185,7 @@ ggplot(
   labs(x = NULL,
        y = NULL,
        title = "Consolidated metric in 2022",
-       subtitle = "Based on deforestation, conflicts, embargoes, forced labor and special areas",
+       subtitle = "Based on alerts of deforestation, embargoes, forced labor, water and land violence and existence of special areas",
        caption = "") +
   # add theme
   theme_map()+
