@@ -10,6 +10,7 @@ options(scipen=999)
 
 #BR map - municipalities
 map <- read_municipality(year=2018)
+biome <- read_biomes(year=2019) %>% filter(name_biome!="Sistema Costeiro")
 
 #CPT
 agua <- read.csv("diversasocioambiental/data/cpt/from_cpt/w_geocodes/conflitos_agua.csv")
@@ -35,12 +36,14 @@ map_violencia <- merge(map,violencia,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 #------ Parameters -----#
 
 # extract quantiles
-quantiles <- map_agua %>% filter(Freq!=0) %>%
-  pull(Freq) %>%
-  quantile(probs = c(0, 0.8, 0.95, 1)) %>%
-  signif(2) %>%
-  as.vector() 
-quantiles[length(quantiles)]<-max(map_agua$Freq,na.rm=T)
+# quantiles <- map_agua %>% filter(Freq!=0) %>%
+#   pull(Freq) %>%
+#   quantile(probs = c(0, 0.8, 0.95, 1)) %>%
+#   signif(2) %>%
+#   as.vector() 
+# quantiles[length(quantiles)]<-max(map_agua$Freq,na.rm=T)
+
+quantiles <- c(1,3,5,8,12)
 
 # here we create custom labels
 labels <- imap_chr(quantiles, function(., idx){
@@ -49,6 +52,7 @@ labels <- imap_chr(quantiles, function(., idx){
                              round(quantiles[idx + 1], 0)))
 })
 labels <- labels[1:length(labels) - 1]
+fix(labels) # manually fixing intervals
 
 map_agua %<>%
   mutate(mean_quantiles = cut(Freq,
@@ -130,14 +134,22 @@ ggplot(
     color = "white",
     size = 0.1
   ) +
+  # scale_fill_manual(
+  #   values=c("#999999", "#E69F00", "#56B4E9", "#56B4E9"),
+  #   name = "Conflicts over water\nnumber of conflicts",
+  #   na.translate = F,
+  #   guide = guide_legend(
+  #    keyheight = unit(5, units = "mm"),
+  #    title.position = "top",
+  #    reverse = T)) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "Conflicts over water\nnumber of conflicts",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.7, 
+    end = 1,
     discrete = T,
-    direction = -1,
+    direction = 1,
     na.translate = F,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
@@ -150,7 +162,12 @@ ggplot(
        title = "Number of conflicts over water in 2021",
        subtitle = "As reported by CPT") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/conflicts_water_2022.png", 
@@ -174,13 +191,13 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "Conflicts over water\nnumber of conflicts",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.7, 
+    end = 1,
     discrete = T,
-    direction = -1,
+    direction = 1,
     na.translate = F,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
@@ -193,7 +210,12 @@ ggplot(
        title = "Number of conflicts over water in 2022",
        subtitle = "As reported by CPT") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
 #---------------------------#
@@ -203,12 +225,14 @@ dev.off()
 #------ Parameters -----#
 
 # extract quantiles
-quantiles <- map_terra %>% filter(conflitos!=0) %>%
-  pull(conflitos) %>%
-  quantile(probs = c(0, 0.8, 0.95, 1)) %>%
-  signif(2) %>%
-  as.vector() 
-quantiles[length(quantiles)]<-max(map_terra$conflitos,na.rm=T)
+# quantiles <- map_terra %>% filter(conflitos!=0) %>%
+#   pull(conflitos) %>%
+#   quantile(probs = c(0, 0.8, 0.95, 1)) %>%
+#   signif(2) %>%
+#   as.vector() 
+# quantiles[length(quantiles)]<-max(map_terra$conflitos,na.rm=T)
+quantiles <- c(1,5,15,30,43)
+
 
 # here we create custom labels
 labels <- imap_chr(quantiles, function(., idx){
@@ -217,6 +241,7 @@ labels <- imap_chr(quantiles, function(., idx){
                              round(quantiles[idx + 1], 0)))
 })
 labels <- labels[1:length(labels) - 1]
+fix(labels)
 
 map_terra %<>%
   mutate(mean_quantiles = cut(conflitos,
@@ -224,11 +249,10 @@ map_terra %<>%
                                labels = labels,
                                include.lowest = T))
 
-
 #------- PLOT --------#
 
 png(filename="diversasocioambiental/map/plots/conflicts_land_2021.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_terra %>% filter(Ano==2021)
     ) +
@@ -248,13 +272,13 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "Conflicts over land\nnumber of conflicts",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.7, 
+    end = 1,
     discrete = T,
-    direction = -1,
+    direction = 1,
     na.translate = F,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
@@ -267,11 +291,16 @@ ggplot(
        title = "Number of conflicts over land in 2021",
        subtitle = "As reported by CPT") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/conflicts_land_2022.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_terra %>% filter(Ano==2022)
     ) +
@@ -291,13 +320,13 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "Conflicts over land\nnumber of conflicts",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.7, 
+    end = 1,
     discrete = T,
-    direction = -1,
+    direction = 1,
     na.translate = F,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
@@ -310,7 +339,12 @@ ggplot(
        title = "Number of conflicts over land in 2022",
        subtitle = "As reported by CPT") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
 
@@ -321,13 +355,14 @@ dev.off()
 #------ Parameters -----#
 
 # extract quantiles
-quantiles <- map_violencia %>% filter(pessoas!=0) %>%
-  pull(pessoas) %>%
-  quantile(probs = c(0, 0.5, 0.9, 0.99, 1)) %>%
-  signif(2) %>%
-  as.vector() 
-quantiles[length(quantiles)]<-max(map_violencia$pessoas,na.rm=TRUE)
-
+# quantiles <- map_violencia %>% filter(pessoas!=0) %>%
+#   pull(pessoas) %>%
+#   quantile(probs = c(0, 0.5, 0.9, 0.99, 1)) %>%
+#   signif(2) %>%
+#   as.vector() 
+# quantiles[length(quantiles)]<-max(map_violencia$pessoas,na.rm=TRUE)
+quantiles<-c(1,5,15,30,45,78)
+fix(quantiles)
 
 # here we create custom labels
 labels <- imap_chr(quantiles, function(., idx){
@@ -336,6 +371,7 @@ labels <- imap_chr(quantiles, function(., idx){
                              round(quantiles[idx + 1], 0)))
 })
 labels <- labels[1:length(labels) - 1]
+fix(labels)
 
 map_violencia %<>%
   mutate(mean_quantiles = cut(pessoas,
@@ -346,7 +382,7 @@ map_violencia %<>%
 #------- PLOT --------#
 
 png(filename="diversasocioambiental/map/plots/violence_2021.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_violencia %>% filter(Ano == 2021)
     ) +
@@ -366,13 +402,13 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "Victims of violence\nnumber of people",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.7, 
+    end = 1,
     discrete = T,
-    direction = -1,
+    direction = 1,
     na.translate = F,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
@@ -385,11 +421,16 @@ ggplot(
        title = "Violence against people in 2021",
        subtitle = "As reported by CPT") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/violence_2022.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_violencia %>% filter(Ano == 2022)
     ) +
@@ -409,14 +450,14 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "Victims of violence\nnumber of people",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.7, 
+    end = 1,
     discrete = T,
     na.translate = F,
-    direction = -1,
+    direction = 1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
@@ -428,5 +469,10 @@ ggplot(
        title = "Violence against people in 2022",
        subtitle = "As reported by CPT") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()

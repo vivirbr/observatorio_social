@@ -9,6 +9,7 @@ options(scipen=999)
 
 #BR map - municipalities
 map <- read_municipality(year=2018)
+biome <- read_biomes(year=2019) %>% filter(name_biome!="Sistema Costeiro")
 
 #Deforestation
 alerts <- read.csv("diversasocioambiental/data/deforestation/mapbiomas_alerts_mun.csv")
@@ -78,6 +79,7 @@ labels_alerts_2022 <- imap_chr(quantiles_alerts_2022, function(., idx){
                              round(quantiles_alerts_2022[idx + 1], 0)))
 })
 labels_alerts_2022 <- labels_alerts_2022[1:length(labels_alerts_2022) - 1]
+fix(labels_alerts_2022)
 
 labels_prodes_2021 <- imap_chr(quantiles_prodes_2021, function(., idx){
   return(paste0(round(quantiles_prodes_2021[idx], 0),
@@ -178,7 +180,7 @@ default_font_color<-"#000000"
 default_background_color<-"transparent"
 
 png(filename="diversasocioambiental/map/plots/deforestation_alerts_2021.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_deforestation
     ) +
@@ -198,14 +200,14 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "Area deforested\nin hectares",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.6, 
+    end = 1,
     discrete = T,
-    direction = -1,
     na.translate = F,
+    direction = 1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
@@ -217,11 +219,16 @@ ggplot(
        title = "Municipality deforestation in 2021",
        subtitle = "As reported by MapBiomas Alerts") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/deforestation_alerts_2022.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_deforestation
     ) +
@@ -240,15 +247,15 @@ ggplot(
     color = "white",
     size = 0.1
   ) +
-  scale_fill_viridis(
-    option = "rocket",
+ scale_fill_viridis(
+    option = "turbo",
     name = "Area deforested\nin hectares",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.6, 
+    end = 1,
     discrete = T,
-    direction = -1,
     na.translate = F,
+    direction = 1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
@@ -260,7 +267,12 @@ ggplot(
        title = "Municipality deforestation in 2022",
        subtitle = "As reported by MapBiomas Alerts") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/deforestation_prodes_2021.png", 

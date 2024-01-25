@@ -10,6 +10,7 @@ options(scipen=999)
 
 #BR map - municipalities
 map <- read_municipality(year=2018)
+biome <- read_biomes(year=2019) %>% filter(name_biome!="Sistema Costeiro")
 
 #Forced labor
 embargoes <- read.csv("diversasocioambiental/data/embargoes/rel_areas_embargadas_0-82104_2024-01-04_073207.csv") %>%
@@ -67,12 +68,13 @@ map_embargo<- merge(map,embargo_final,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 #------ Parameters -----#
 
 # extract quantiles
-quantiles <- map_embargo %>% filter(freq!=0) %>%
-  pull(freq) %>%
-  quantile(probs = c(0, 0.7, 0.9, 0.95, 1)) %>%
-  signif(2) %>%
-  as.vector() 
-quantiles[length(quantiles)]<-max(map_embargo$freq,na.rm=TRUE)
+# quantiles <- map_embargo %>% filter(freq!=0) %>%
+#   pull(freq) %>%
+#   quantile(probs = c(0, 0.7, 0.9, 0.95, 1)) %>%
+#   signif(2) %>%
+#   as.vector() 
+# quantiles[length(quantiles)]<-max(map_embargo$freq,na.rm=TRUE)
+quantiles <- c(1,5,30,100,200,351)
 
 
 # here we create custom labels
@@ -142,8 +144,8 @@ theme_map <- function(...) {
 default_font_color<-"#000000"
 default_background_color<-"transparent"
 
-png(filename="diversasocioambiental/map/plots/embargoes_deforestation.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+png(filename="diversasocioambiental/map/plots/embargoes_deforestation_2022.png", 
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_embargo
     ) +
@@ -163,14 +165,14 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "Number\nof embargoes",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.7, 
+    end = 1,
     discrete = T,
-    direction = -1,
     na.translate = F,
+    direction = 1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
@@ -183,7 +185,12 @@ ggplot(
        subtitle = "As reported by IBAMA",
        caption = "") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
 

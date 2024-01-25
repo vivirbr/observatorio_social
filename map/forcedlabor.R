@@ -9,6 +9,7 @@ options(scipen=999)
 
 #BR map - municipalities
 map <- read_municipality(year=2018)
+biome <- read_biomes(year=2019) %>% filter(name_biome!="Sistema Costeiro")
 
 #Forced labor
 forcedlabor <- read.csv("diversasocioambiental/data/forced_labor/full_radarsit.csv") %>%
@@ -22,12 +23,14 @@ map_forcedlabor<- merge(map,forcedlabor,by.x="code_muni",by.y="CD_MUN",all.x=TRU
 #------ Parameters -----#
 
 # extract quantiles
-quantiles <- map_forcedlabor %>% filter(trabalhoescravo!=0) %>%
-  pull(trabalhoescravo) %>%
-  quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
-  signif(2) %>%
-  as.vector() 
-quantiles[length(quantiles)]<-max(map_forcedlabor$trabalhoescravo, na.rm=TRUE)
+# quantiles <- map_forcedlabor %>% filter(trabalhoescravo!=0) %>%
+#   pull(trabalhoescravo) %>%
+#   quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
+#   signif(2) %>%
+#   as.vector() 
+# quantiles[length(quantiles)]<-max(map_forcedlabor$trabalhoescravo, na.rm=TRUE)
+quantiles<-c(1,5,50,100,250,500)
+
 
 # here we create custom labels
 labels <- imap_chr(quantiles, function(., idx){
@@ -36,7 +39,7 @@ labels <- imap_chr(quantiles, function(., idx){
                              round(quantiles[idx + 1], 0)))
 })
 labels <- labels[1:length(labels) - 1]
-
+fix(labels)
 
 map_forcedlabor %<>%
   mutate(mean_quantiles = cut(trabalhoescravo,
@@ -98,7 +101,7 @@ default_font_color<-"#000000"
 default_background_color<-"transparent"
 
 png(filename="diversasocioambiental/map/plots/forced_labor_2021.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_forcedlabor %>% filter(year==2021)
     ) +
@@ -117,15 +120,15 @@ ggplot(
     color = "white",
     size = 0.1
   ) +
-  scale_fill_viridis(
-    option = "rocket",
+ scale_fill_viridis(
+    option = "turbo",
     name = "Forced labor\nnumber of people",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.7, 
+    end = 1,
     discrete = T,
-    direction = -1,
     na.translate = F,
+    direction = 1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
@@ -137,11 +140,16 @@ ggplot(
        title = "Number of people in 2021 found working in conditions that are similar to slave labor",
        subtitle = "As reported by Radar SIT") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/forced_labor_2022.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_forcedlabor %>% filter(year==2022)
     ) +
@@ -161,14 +169,14 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "Forced labor\nnumber of people",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.7, 
+    end = 1,
     discrete = T,
     na.translate = F,
-    direction = -1,
+    direction = 1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
@@ -180,5 +188,10 @@ ggplot(
        title = "Number of people in 2022 found working in conditions that are similar to slave labor",
        subtitle = "As reported by Radar SIT") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
 dev.off()

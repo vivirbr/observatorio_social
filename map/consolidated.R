@@ -9,6 +9,7 @@ options(scipen=999)
 
 #BR map - municipalities
 map <- read_municipality(year=2018)
+biome <- read_biomes(year=2019) %>% filter(name_biome!="Sistema Costeiro")
 
 #Forced labor
 consolidated <- read.csv("diversasocioambiental/data/consolidated_metrics.csv") %>% 
@@ -19,11 +20,13 @@ map_consolidated<- merge(map,consolidated,by.x="code_muni",by.y="CD_MUN",all.x=T
 #------ Parameters -----#
 
 # extract quantiles
-quantiles <- map_consolidated %>% filter(consolidated!=0) %>%
-  pull(consolidated) %>%
-  quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
-  as.vector() 
-quantiles[length(quantiles)]<-max(map_consolidated$consolidated,na.rm=TRUE)
+# quantiles <- map_consolidated %>% filter(consolidated!=0) %>%
+#   pull(consolidated) %>%
+#   quantile(probs = c(0, 0.5, 0.9, 0.99, 0.995, 1)) %>%
+#   as.vector() 
+# quantiles[length(quantiles)]<-max(map_consolidated$consolidated,na.rm=TRUE)
+quantiles <- c(0,0.01,0.10,0.25,0.5)
+
 
 # here we create custom labels
 labels <- imap_chr(quantiles, function(., idx){
@@ -32,6 +35,7 @@ labels <- imap_chr(quantiles, function(., idx){
                              round(quantiles[idx + 1], 10)))
 })
 labels <- labels[1:length(labels) - 1]
+fix(labels)
 
 map_consolidated %<>%
   mutate(mean_quantiles = cut(consolidated,
@@ -93,7 +97,7 @@ default_font_color<-"#000000"
 default_background_color<-"transparent"
 
 png(filename="diversasocioambiental/map/plots/consolidated_2021.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_consolidated %>% filter(year==2021)
     ) +
@@ -113,13 +117,13 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "normalized index",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.6, 
+    end = 1,
     discrete = T,
-    direction = -1,
+    direction = 1,
     na.translate = F,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
@@ -133,11 +137,17 @@ ggplot(
        subtitle = "Based on alerts of deforestation, forced labor, water and people violence",
        caption = "") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
+
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/consolidated_2022.png", 
-             width = 3000, height = 3000, units = "px", res = 300)
+             width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = map_consolidated %>% filter(year==2022)
     ) +
@@ -157,13 +167,13 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "rocket",
+    option = "turbo",
     name = "normalized index",
     alpha = 0.9, 
-    begin = 0.1, 
-    end = 0.9,
+    begin = 0.6, 
+    end = 1,
     discrete = T,
-    direction = -1,
+    direction = 1,
     na.translate = F,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
@@ -177,7 +187,13 @@ ggplot(
        subtitle = "Based on deforestation, conflicts, embargoes, forced labor and special areas",
        caption = "") +
   # add theme
-  theme_map()
+  theme_map()+
+  geom_sf(
+    data = biome,
+    fill = "transparent",
+    color = "gray30"
+  ) 
+
 dev.off()
 
 
