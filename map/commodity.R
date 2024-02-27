@@ -17,6 +17,10 @@ biome <- read_biomes(year=2019) %>% filter(name_biome!="Sistema Costeiro")
 commodity <- read.csv("/home/vivrbr/Dev/diversasocioambiental/data/ibge/commodity_production.csv") 
 commodity <- merge(map,commodity, by="code_muni",all.x=TRUE)
 
+#Infrastructure
+silos <- read_sf("/home/vivrbr/Dev/diversasocioambiental/infrastructure/silos.geojson")
+slaughterhouses <- read_sf("/home/vivrbr/Dev/diversasocioambiental/infrastructure/slaughterhouses.geojson")
+
 #------- PLOT --------#
 
 theme_map <- function(...) {
@@ -129,6 +133,9 @@ consolidated_aggregated_2022 <- consolidated_aggregated_2022 %>%
 classes_2021 <- merge(commodity %>% filter(year==2021),consolidated_aggregated_2021,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 classes_2022 <- merge(commodity %>% filter(year==2022),consolidated_aggregated_2022,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
+# write.csv(classes_2021,"diversasocioambiental/input_tables/social_env_impact_commodities_2021.csv",row.names=FALSE)
+# write.csv(classes_2022,"diversasocioambiental/input_tables/social_env_impact_commodities_2022.csv",row.names=FALSE)
+
 chart_table_2021 <- data.frame(classes_2021) %>% 
                         group_by(consolidated_cases) %>% 
                         summarize(soy_risk=sum(soy_perc,na.rm=TRUE)*100,
@@ -169,6 +176,7 @@ labels <- imap_chr(quantiles, function(., idx){
                              round(quantiles[idx + 1], 0)))
 })
 labels <- labels[1:length(labels) - 1]
+fix(labels)
 
 commodity %<>%
   mutate(mean_quantiles = cut(soy,
@@ -176,7 +184,20 @@ commodity %<>%
                                labels = labels,
                                include.lowest = T))
 
+
+chart_table_2021$consolidated_cases <- factor(chart_table_2021$consolidated_cases, 
+                                   levels = c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))
+chart_table_2022$consolidated_cases <- factor(chart_table_2022$consolidated_cases, 
+                                   levels = c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))
+
 ## commodity chart
+
 chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=soy_risk, fill=consolidated_cases)) +
           geom_bar(stat="identity")+
           scale_y_continuous(limits = c(0, 45))+
@@ -184,7 +205,7 @@ chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=soy_risk, fill=
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -199,7 +220,7 @@ chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=soy_risk, fill=
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -208,7 +229,7 @@ chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=soy_risk, fill=
           labs(fill = "Social environmental impact",
                 y ="Percentage of production")
 
-png(filename="diversasocioambiental/map/plots/soy_2021.png", 
+png(filename="diversasocioambiental/map/plots/soy_2021_w_silos.png", 
              width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
   data = commodity %>% filter(year==2021)
@@ -229,18 +250,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option = "D",
     name = "Area of soy \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -258,6 +279,12 @@ ggplot(
   ) + 
   scale_x_continuous(limits = c(-75, -30))+
   scale_y_continuous(limits = c(3, -40))+
+  # geom_sf(
+  #   data = silos,
+  #   fill = "#d1d1d1",
+  #   color=alpha("black",0.2),
+  #   size= 0.2
+  # ) +
   annotation_custom(
     grob = ggplotGrob(chart_2021),
     xmin = -70,
@@ -289,18 +316,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option = "D",
     name = "Area of soy \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -318,6 +345,12 @@ ggplot(
   ) +
   scale_x_continuous(limits = c(-75, -30))+
   scale_y_continuous(limits = c(3, -40))+
+  # geom_sf(
+  #   data = silos,
+  #   fill = "#d1d1d1",
+  #   color=alpha("black",0.2),
+  #   size= 0.2
+  # ) +
   annotation_custom(
     grob = ggplotGrob(chart_2022),
     xmin = -70,
@@ -360,7 +393,7 @@ chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=beef_risk, fill
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -375,7 +408,7 @@ chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=beef_risk, fill
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -405,18 +438,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option = "D",
     name = "Cattle herd \nin heads",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -434,6 +467,12 @@ ggplot(
   ) + 
   scale_x_continuous(limits = c(-75, -30))+
   scale_y_continuous(limits = c(3, -40))+
+  # geom_sf(
+  #   data = slaughterhouses,
+  #   fill = "#d1d1d1",
+  #   color=alpha("black",0.8),
+  #   size= 1
+  # ) +
   annotation_custom(
     grob = ggplotGrob(chart_2021),
     xmin = -70,
@@ -465,18 +504,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option = "D",
     name = "Cattle herd \nin heads",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -494,6 +533,12 @@ ggplot(
   ) +
   scale_x_continuous(limits = c(-75, -30))+
   scale_y_continuous(limits = c(3, -40))+
+  # geom_sf(
+  #   data = slaughterhouses,
+  #   fill = "#d1d1d1",
+  #   color=alpha("black",0.8),
+  #   size= 1
+  # ) +
   annotation_custom(
     grob = ggplotGrob(chart_2022),
     xmin = -70,
@@ -537,7 +582,7 @@ chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=coffee_risk, fi
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -552,7 +597,7 @@ chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=coffee_risk, fi
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -582,18 +627,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option="D",
     name = "Area of coffee \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -642,18 +687,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option="D",
     name = "Area of coffee \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -715,7 +760,7 @@ chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=cocoa_risk, fil
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -730,7 +775,7 @@ chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=cocoa_risk, fil
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -760,18 +805,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option="D",
     name = "Area of cocoa \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -820,18 +865,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option="D",
     name = "Area of cocoa \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -893,7 +938,7 @@ chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=palm_risk, fill
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -908,7 +953,7 @@ chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=palm_risk, fill
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -938,18 +983,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option="D",
     name = "Area of palm \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -998,18 +1043,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option="D",
     name = "Area of palm \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -1072,7 +1117,7 @@ chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=rubber_risk, fi
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -1087,7 +1132,7 @@ chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=rubber_risk, fi
                                     "Low reported socioenvironmental impacts",
                                     "Medium reported socioenvironmental impacts",
                                     "High reported socioenvironmental impacts"))+
-          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          scale_fill_manual(values=c("gray","#e09f3e","#9e2a2b","#540b0e"))+
           theme(panel.background = element_rect(fill = "white",
                                 colour = "white",
                                 size = 0.5, linetype = "solid"),
@@ -1117,18 +1162,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option="D",
     name = "Area used for rubber \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,
@@ -1177,18 +1222,18 @@ ggplot(
     size = 0.1
   ) +
   scale_fill_viridis(
-    option = "turbo",
+    option="D",
     name = "Area used for rubber \nin hectares",
     alpha = 0.7, 
-    begin = 0.7, 
+    begin = 0.1, 
     end = 1,
     discrete = T,
     na.translate = F,
-    direction = 1,
+    direction = -1,
     guide = guide_legend(
      keyheight = unit(5, units = "mm"),
      title.position = "top",
-     reverse = T
+     reverse = F
   )) +
   # add titles
   labs(x = NULL,

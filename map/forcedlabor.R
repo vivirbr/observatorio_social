@@ -20,6 +20,7 @@ forcedlabor <- read.csv("diversasocioambiental/data/forced_labor/full_radarsit.c
 
 map_forcedlabor<- merge(map,forcedlabor,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
+# write.csv(data.frame(map_forcedlabor) %>% select(-geometry),"diversasocioambiental/input_tables/forced_labor.csv",row.names=FALSE)
 #------ Parameters -----#
 
 # extract quantiles

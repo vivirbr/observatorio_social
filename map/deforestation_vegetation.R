@@ -15,6 +15,8 @@ biome <- read_biomes(year=2019) %>% filter(name_biome!="Sistema Costeiro")
 alerts <- read.csv("diversasocioambiental/data/deforestation/mapbiomas_alerts_mun_vegetation.csv")
 map_deforestation<- merge(map,alerts,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
+# write.csv(alerts,"diversasocioambiental/input_tables/mapbiomas_alerts_mun_vegetation.csv",row.names=FALSE)
+
 
 #------ Parameters -----#
 
@@ -89,7 +91,7 @@ map_deforestation %<>%
                                breaks = quantiles_owl_2021,
                                labels = labels_owl_2021,
                                include.lowest = T),
-        mean_quantiles_owl_2022 = cut(alertsowl_2021,
+        mean_quantiles_owl_2022 = cut(alertsowl_2022,
                                breaks = quantiles_owl_2022,
                                labels = labels_owl_2022,
                                include.lowest = T),
@@ -194,7 +196,8 @@ ggplot(
   labs(x = NULL,
        y = NULL,
        title = "Municipality deforestation in forests in 2021",
-       subtitle = "As reported by MapBiomas Alerts") +
+       subtitle = "As reported by MapBiomas Alerts - harmonized with FAO 2012 definition",
+       caption= "When MapBiomas classes were associated to both forest and other wooded lands (OWL), the class assumed was OWL.") +
   # add theme
   theme_map()+
   geom_sf(
@@ -242,7 +245,8 @@ ggplot(
   labs(x = NULL,
        y = NULL,
        title = "Municipality deforestation in forests in 2022",
-       subtitle = "As reported by MapBiomas Alerts") +
+       subtitle = "As reported by MapBiomas Alerts - harmonized with FAO 2012 definition",
+       caption= "When MapBiomas classes were associated to both forest and other wooded lands (OWL), the class assumed was OWL.") +
   # add theme
   theme_map()+
   geom_sf(
@@ -289,8 +293,10 @@ ggplot(
   # add titles
   labs(x = NULL,
        y = NULL,
-       title = "Municipality deforestation in other woodedlands in 2021",
-       subtitle = "As reported by MapBiomas Alerts") +
+       title = "Municipality deforestation in other wooded lands in 2021",
+       subtitle = "As reported by MapBiomas Alerts - harmonized with FAO 2012 definition",
+       caption= "When MapBiomas classes were associated to both forest and other wooded lands (OWL), the class assumed was OWL.") +
+
   # add theme
   theme_map()+
   geom_sf(
@@ -337,8 +343,10 @@ ggplot(
   # add titles
   labs(x = NULL,
        y = NULL,
-       title = "Municipality deforestation in other woodedlands in 2022",
-       subtitle = "As reported by MapBiomas Alerts") +
+       title = "Municipality deforestation in other wooded lands in 2022",
+       subtitle = "As reported by MapBiomas Alerts - harmonized with FAO 2012 definition",
+       caption= "When MapBiomas classes were associated to both forest and other wooded lands (OWL), the class assumed was OWL.") +
+
   # add theme
   theme_map()+
   geom_sf(
@@ -386,7 +394,8 @@ ggplot(
   labs(x = NULL,
        y = NULL,
        title = "Municipality deforestation in other vegetations in 2021",
-       subtitle = "As reported by MapBiomas Alerts") +
+       subtitle = "As reported by MapBiomas Alerts - harmonized with FAO 2012 definition",
+       caption= "When MapBiomas classes were associated to both forest and other wooded lands (OWL), the class assumed was OWL.") +
   # add theme
   theme_map()+
   geom_sf(
@@ -434,7 +443,8 @@ ggplot(
   labs(x = NULL,
        y = NULL,
        title = "Municipality deforestation in other vegetations in 2022",
-       subtitle = "As reported by MapBiomas Alerts") +
+       subtitle = "As reported by MapBiomas Alerts - harmonized with FAO 2012 definition",
+       caption= "When MapBiomas classes were associated to both forest and other wooded lands (OWL), the class assumed was OWL.") +
   # add theme
   theme_map()+
   geom_sf(

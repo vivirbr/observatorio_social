@@ -63,6 +63,7 @@ colnames(embargo_final)<-c("CD_MUN","freq")
 
 
 map_embargo<- merge(map,embargo_final,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
+# write.csv(data.frame(map_embargo) %>% select(-geometry),"diversasocioambiental/input_tables/embargo_with_geocode.csv",row.names=FALSE)
 
 
 #------ Parameters -----#

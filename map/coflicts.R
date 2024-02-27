@@ -29,6 +29,10 @@ map_terra <- merge(map,terra,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
 map_violencia <- merge(map,violencia,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
 
+# write.csv(data.frame(map_agua) %>% select(-geometry),"diversasocioambiental/input_tables/conflicts_water.csv",row.names=FALSE)
+# write.csv(data.frame(map_terra) %>% select(-geometry),"diversasocioambiental/input_tables/conflicts_land.csv",row.names=FALSE)
+# write.csv(data.frame(map_violencia) %>% select(-geometry),"diversasocioambiental/input_tables/violence.csv",row.names=FALSE)
+
 #---------------------------#
 #----Conflitos por Agua----#
 #---------------------------#
