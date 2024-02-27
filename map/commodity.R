@@ -4,6 +4,7 @@ library(fedmatch)
 library(viridis)
 library(dplyr)  
 library(geobr)
+library(grid)
 library(sf)
 
 options(scipen=999)
@@ -69,6 +70,82 @@ theme_map <- function(...) {
 default_font_color<-"#000000"
 default_background_color<-"transparent"
 
+## adding to the plot the calculation based on the consolidated areas
+# Condolidated
+consolidated <- read.csv("diversasocioambiental/data/consolidated_metrics.csv")
+
+consolidated_aggregated_2021 <- consolidated %>% filter(year==2021) %>%
+                             mutate(social_risk = rowMeans(select(., freq,terra,trabalhoescravo), na.rm = TRUE),
+                                    env_risk = rowMeans(select(., deforestation), na.rm = TRUE)) %>%
+                             select(CD_MUN,social_risk,env_risk,perc_area)
+consolidated_aggregated_2022 <- consolidated %>% filter(year==2022) %>%
+                             mutate(social_risk = rowMeans(select(., freq,terra,trabalhoescravo), na.rm = TRUE),
+                                    env_risk = rowMeans(select(., deforestation,embargoes), na.rm = TRUE)) %>%
+                             select(CD_MUN,social_risk,env_risk,perc_area)
+
+# 2021
+consolidated_aggregated_2021$social_risk_level <- ifelse(consolidated_aggregated_2021$social_risk == 0,"NO",
+                                               ifelse(consolidated_aggregated_2021$social_risk >0 & consolidated_aggregated_2021$social_risk < 0.031,"LOW","HIGH"))
+
+consolidated_aggregated_2021$env_risk_level <- ifelse(consolidated_aggregated_2021$env_risk == 0,"NO",
+                                               ifelse(consolidated_aggregated_2021$env_risk >0 & consolidated_aggregated_2021$env_risk < 0.0028,"LOW","HIGH"))
+
+consolidated_aggregated_2021$consolidated_cases <- paste(consolidated_aggregated_2021$social_risk_level,
+                                                    consolidated_aggregated_2021$env_risk_level,sep="-")
+
+consolidated_aggregated_2021 <- consolidated_aggregated_2021 %>%
+                                  mutate(consolidated_cases = case_when(consolidated_cases=="HIGH-HIGH" ~ "High reported socioenvironmental impacts",
+                                                                        consolidated_cases=="HIGH-LOW"|
+                                                                        consolidated_cases=="HIGH-NO"|
+                                                                        consolidated_cases=="LOW-HIGH"|
+                                                                        consolidated_cases=="NO-HIGH" ~ "Medium reported socioenvironmental impacts",
+                                                                        consolidated_cases=="LOW-LOW"|
+                                                                        consolidated_cases=="LOW-NO"|
+                                                                        consolidated_cases=="NO-LOW" ~ "Low reported socioenvironmental impacts",
+                                                                        consolidated_cases=="NO-NO" ~ "No information on socioenvironmental impacts"))
+
+# 2022
+consolidated_aggregated_2022$social_risk_level <- ifelse(consolidated_aggregated_2022$social_risk == 0,"NO",
+                                               ifelse(consolidated_aggregated_2022$social_risk >0 & consolidated_aggregated_2022$social_risk < 0.031,"LOW","HIGH"))
+
+consolidated_aggregated_2022$env_risk_level <- ifelse(consolidated_aggregated_2022$env_risk == 0,"NO",
+                                               ifelse(consolidated_aggregated_2022$env_risk >0 & consolidated_aggregated_2022$env_risk < 0.0023,"LOW","HIGH"))
+
+consolidated_aggregated_2022$consolidated_cases <- paste(consolidated_aggregated_2022$social_risk_level,
+                                                    consolidated_aggregated_2022$env_risk_level,sep="-")
+
+consolidated_aggregated_2022 <- consolidated_aggregated_2022 %>%
+                                  mutate(consolidated_cases = case_when(consolidated_cases=="HIGH-HIGH" ~ "High reported socioenvironmental impacts",
+                                                                        consolidated_cases=="HIGH-LOW"|
+                                                                        consolidated_cases=="HIGH-NO"|
+                                                                        consolidated_cases=="LOW-HIGH"|
+                                                                        consolidated_cases=="NO-HIGH" ~ "Medium reported socioenvironmental impacts",
+                                                                        consolidated_cases=="LOW-LOW"|
+                                                                        consolidated_cases=="LOW-NO"|
+                                                                        consolidated_cases=="NO-LOW" ~ "Low reported socioenvironmental impacts",
+                                                                        consolidated_cases=="NO-NO" ~ "No information on socioenvironmental impacts"))
+
+## Merging the commodity file with the classification
+classes_2021 <- merge(commodity %>% filter(year==2021),consolidated_aggregated_2021,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
+classes_2022 <- merge(commodity %>% filter(year==2022),consolidated_aggregated_2022,by.x="code_muni",by.y="CD_MUN",all.x=TRUE)
+
+chart_table_2021 <- data.frame(classes_2021) %>% 
+                        group_by(consolidated_cases) %>% 
+                        summarize(soy_risk=sum(soy_perc,na.rm=TRUE)*100,
+                                  beef_risk=sum(beef_perc,na.rm=TRUE)*100,
+                                  coffee_risk=sum(coffee_perc,na.rm=TRUE)*100,
+                                  cocoa_risk=sum(cocoa_perc,na.rm=TRUE)*100,
+                                  palm_risk=sum(palm_perc,na.rm=TRUE)*100,
+                                  rubber_risk=sum(rubber_perc,na.rm=TRUE)*100)
+chart_table_2022 <- data.frame(classes_2022) %>% 
+                        group_by(consolidated_cases) %>% 
+                        summarize(soy_risk=sum(soy_perc,na.rm=TRUE)*100,
+                                  beef_risk=sum(beef_perc,na.rm=TRUE)*100,
+                                  coffee_risk=sum(coffee_perc,na.rm=TRUE)*100,
+                                  cocoa_risk=sum(cocoa_perc,na.rm=TRUE)*100,
+                                  palm_risk=sum(palm_perc,na.rm=TRUE)*100,
+                                  rubber_risk=sum(rubber_perc,na.rm=TRUE)*100)
+
 #------ Parameters and plot -----#
 
 # extract quantiles
@@ -98,6 +175,38 @@ commodity %<>%
                                breaks = quantiles,
                                labels = labels,
                                include.lowest = T))
+
+## commodity chart
+chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=soy_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 45))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
+chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=soy_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 45))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
 
 png(filename="diversasocioambiental/map/plots/soy_2021.png", 
              width = 3500, height = 3500, units = "px", res = 300)
@@ -141,11 +250,22 @@ ggplot(
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) + 
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2021),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
+
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/soy_2022.png", 
@@ -190,10 +310,20 @@ ggplot(
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) +
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2022),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
 dev.off()
 
@@ -215,13 +345,44 @@ labels <- imap_chr(quantiles, function(., idx){
                              round(quantiles[idx + 1], 0)))
 })
 labels <- labels[1:length(labels) - 1]
-fix(labels)
 
 commodity %<>%
   mutate(mean_quantiles = cut(beef,
                                breaks = quantiles,
                                labels = labels,
                                include.lowest = T))
+
+## commodity chart
+chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=beef_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 45))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
+chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=beef_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 45))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
 
 png(filename="diversasocioambiental/map/plots/beef_2021.png", 
              width = 3500, height = 3500, units = "px", res = 300)
@@ -245,7 +406,7 @@ ggplot(
   ) +
   scale_fill_viridis(
     option = "turbo",
-    name = "Number of \nheads",
+    name = "Cattle herd \nin heads",
     alpha = 0.7, 
     begin = 0.7, 
     end = 1,
@@ -265,11 +426,22 @@ ggplot(
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) + 
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2021),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
+
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/beef_2022.png", 
@@ -294,7 +466,7 @@ ggplot(
   ) +
   scale_fill_viridis(
     option = "turbo",
-    name = "Number \nof heads",
+    name = "Cattle herd \nin heads",
     alpha = 0.7, 
     begin = 0.7, 
     end = 1,
@@ -309,15 +481,25 @@ ggplot(
   # add titles
   labs(x = NULL,
        y = NULL,
-       title = "Cattle herd size in 2021",
+       title = "Cattle herd size in 2022",
        subtitle = "As reported by IBGE",
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) +
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2022),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
 dev.off()
 
@@ -346,6 +528,38 @@ commodity %<>%
                                breaks = quantiles,
                                labels = labels,
                                include.lowest = T))
+
+## commodity chart
+chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=coffee_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 60))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
+chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=coffee_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 60))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
 
 png(filename="diversasocioambiental/map/plots/coffee_2021.png", 
              width = 3500, height = 3500, units = "px", res = 300)
@@ -389,11 +603,22 @@ ggplot(
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) + 
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2021),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
+
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/coffee_2022.png", 
@@ -438,12 +663,23 @@ ggplot(
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) +
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2022),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
 dev.off()
+
 
 ####################
 ###    cocoa    ###
@@ -470,6 +706,38 @@ commodity %<>%
                                breaks = quantiles,
                                labels = labels,
                                include.lowest = T))
+
+## commodity chart
+chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=cocoa_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 70))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
+chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=cocoa_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 70))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
 
 png(filename="diversasocioambiental/map/plots/cocoa_2021.png", 
              width = 3500, height = 3500, units = "px", res = 300)
@@ -513,11 +781,22 @@ ggplot(
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) + 
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2021),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
+
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/cocoa_2022.png", 
@@ -562,12 +841,23 @@ ggplot(
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) +
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2022),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
 dev.off()
+
 
 ####################
 ###    palm      ###
@@ -594,6 +884,38 @@ commodity %<>%
                                breaks = quantiles,
                                labels = labels,
                                include.lowest = T))
+
+## commodity chart
+chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=palm_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 60))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
+chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=palm_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 60))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
 
 png(filename="diversasocioambiental/map/plots/palm_2021.png", 
              width = 3500, height = 3500, units = "px", res = 300)
@@ -637,11 +959,22 @@ ggplot(
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) + 
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2021),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
+
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/palm_2022.png", 
@@ -686,12 +1019,23 @@ ggplot(
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) +
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2022),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
 dev.off()
+
 
 ####################
 ###    rubber    ###
@@ -719,6 +1063,39 @@ commodity %<>%
                                labels = labels,
                                include.lowest = T))
 
+
+## commodity chart
+chart_2021<-ggplot(chart_table_2021, aes(x=consolidated_cases, y=rubber_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 65))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
+chart_2022<-ggplot(chart_table_2022, aes(x=consolidated_cases, y=rubber_risk, fill=consolidated_cases)) +
+          geom_bar(stat="identity")+
+          scale_y_continuous(limits = c(0, 65))+
+          scale_x_discrete(limits=c("No information on socioenvironmental impacts",
+                                    "Low reported socioenvironmental impacts",
+                                    "Medium reported socioenvironmental impacts",
+                                    "High reported socioenvironmental impacts"))+
+          scale_fill_manual(values=c("#540b0e","#e09f3e","#9e2a2b","gray"))+
+          theme(panel.background = element_rect(fill = "white",
+                                colour = "white",
+                                size = 0.5, linetype = "solid"),
+                axis.title.x=element_blank(),
+                axis.text.x=element_blank()) + 
+          labs(fill = "Social environmental impact",
+                y ="Percentage of production")
+
 png(filename="diversasocioambiental/map/plots/rubber_2021.png", 
              width = 3500, height = 3500, units = "px", res = 300)
 ggplot(
@@ -741,7 +1118,7 @@ ggplot(
   ) +
   scale_fill_viridis(
     option = "turbo",
-    name = "Area of rubber \nin hectares",
+    name = "Area used for rubber \nin hectares",
     alpha = 0.7, 
     begin = 0.7, 
     end = 1,
@@ -756,16 +1133,27 @@ ggplot(
   # add titles
   labs(x = NULL,
        y = NULL,
-       title = "Area of planted for rubber in 2021",
+       title = "Area of used for rubber in 2021",
        subtitle = "As reported by IBGE",
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) + 
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2021),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
+
 dev.off()
 
 png(filename="diversasocioambiental/map/plots/rubber_2022.png", 
@@ -790,7 +1178,7 @@ ggplot(
   ) +
   scale_fill_viridis(
     option = "turbo",
-    name = "Area of rubber \nin hectares",
+    name = "Area used for rubber \nin hectares",
     alpha = 0.7, 
     begin = 0.7, 
     end = 1,
@@ -805,14 +1193,25 @@ ggplot(
   # add titles
   labs(x = NULL,
        y = NULL,
-       title = "Area of planted for rubber in 2022",
+       title = "Area used for rubber in 2022",
        subtitle = "As reported by IBGE",
        caption = "") +
   # add theme
   theme_map()+
+  theme(legend.position="top")+
   geom_sf(
     data = biome,
     fill = "transparent",
     color = "gray30"
+  ) +
+  scale_x_continuous(limits = c(-75, -30))+
+  scale_y_continuous(limits = c(3, -40))+
+  annotation_custom(
+    grob = ggplotGrob(chart_2022),
+    xmin = -70,
+    xmax = -30,
+    ymin = -42,
+    ymax = -35
   ) 
 dev.off()
+
